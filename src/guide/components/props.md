@@ -1,18 +1,18 @@
 # Props
 
-> This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
+> Esta página asume que ya has leído los [Fundamentos de los Componentes](/guide/essentials/component-basics). Léelo primero si eres nuevo en el tema de componentes.
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="Free Vue.js Props Lesson"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="Lección gratuita de Props de Vue.js"/>
 </div>
 
-## Props Declaration
+## Declaración de Props
 
-Vue components require explicit props declaration so that Vue knows what external props passed to the component should be treated as fallthrough attributes (which will be discussed in [its dedicated section](/guide/components/attrs)).
+Los componentes de Vue requieren una declaración explícita de props para que Vue sepa qué props externos pasados al componente deben ser tratados como atributos fallthrough (que se discutirán en [su sección dedicada](/guide/components/attrs)).
 
 <div class="composition-api">
 
-In SFCs using `<script setup>`, props can be declared using the `defineProps()` macro:
+En los SFC que utilizan `<script setup>`, las props pueden declararse utilizando la macro `defineProps()`:
 
 ```vue
 <script setup>
@@ -22,31 +22,31 @@ console.log(props.foo)
 </script>
 ```
 
-In non-`<script setup>` components, props are declared using the [`props`](/api/options-state.html#props) option:
+En los componentes que no son `<script setup>`, las props se declaran utilizando la opción [`props`](/api/options-state.html#props):
 
 ```js
 export default {
   props: ['foo'],
   setup(props) {
-    // setup() receives props as the first argument.
+    // setup() recibe props como primer argumento.
     console.log(props.foo)
   }
 }
 ```
 
-Notice the argument passed to `defineProps()` is the same as the value provided to the `props` options: the same props options API is shared between the two declaration styles.
+Observa que el argumento pasado a `defineProps()` es el mismo que el valor proporcionado a las opciones `props`: las mismas props de la options API son compatibles con los dos estilos de declaración.
 
 </div>
 
 <div class="options-api">
 
-Props are declared using the [`props`](/api/options-state.html#props) option:
+Las props se declaran utilizando la opción [`props`](/api/options-state.html#props):
 
 ```js
 export default {
   props: ['foo'],
   created() {
-    // props are exposed on `this`
+    // las props van a estar expuestas a `this`.
     console.log(this.foo)
   }
 }
@@ -54,7 +54,7 @@ export default {
 
 </div>
 
-In addition to declaring props using an array of strings, we can also use the object syntax:
+Además de declarar las props utilizando un array de strings, también podemos utilizar la sintaxis de objetos:
 
 <div class="options-api">
 
@@ -71,7 +71,7 @@ export default {
 <div class="composition-api">
 
 ```js
-// in <script setup>
+// en <script setup>
 defineProps({
   title: String,
   likes: Number
@@ -79,7 +79,7 @@ defineProps({
 ```
 
 ```js
-// in non-<script setup>
+// sin <script setup>
 export default {
   props: {
     title: String,
@@ -90,19 +90,19 @@ export default {
 
 </div>
 
-For each property in the object declaration syntax, the key is the name of the prop, while the value should be the constructor function of the expected type.
+Para cada propiedad en la sintaxis de la declaración del objeto, la key es el nombre de la prop, mientras que el value debe ser la función constructora del tipo esperado.
 
-This not only documents your component, but will also warn other developers using your component in the browser console if they pass the wrong type. We will discuss more details about [prop validation](#prop-validation) further down this page.
+Esto no sólo documenta tu componente, sino que también advertirá a otros desarrolladores que utilicen tu componente en la consola del navegador si pasan el tipo incorrecto. Discutiremos más detalles sobre [validación de prop](#validacion-de-prop) más adelante en esta página.
 
 <div class="options-api">
 
-See also: [Typing Component Props](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
+Mira también: [Escritura de las Props de Componentes](/guide/typescript/options-api.html#escritura-de-las-props-de-componentes) <sup class="vt-badge ts" />
 
 </div>
 
 <div class="composition-api">
 
-If you are using TypeScript with `<script setup>`, it's also possible to declare props using pure type annotations:
+Si estás usando TypeScript con `<script setup>`, también es posible declarar props usando anotaciones de tipo puro:
 
 ```vue
 <script setup lang="ts">
@@ -113,7 +113,7 @@ defineProps<{
 </script>
 ```
 
-More details: [Typing Component Props](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+Más detalles: [Escritura de las Props de Componentes](/guide/typescript/composition-api.html#escritura-de-las-props-de-componentes) <sup class="vt-badge ts" />
 
 </div>
 
@@ -369,7 +369,7 @@ When objects and arrays are passed as props, while the child component cannot mu
 
 The main drawback of such mutations is that it allows the child component to affect parent state in a way that isn't obvious to the parent component, potentially making it more difficult to reason about the data flow in the future. As a best practice, you should avoid such mutations unless the parent and child are tightly coupled by design. In most cases, the child should [emit an event](/guide/components/events.html) to let the parent perform the mutation.
 
-## Prop Validation
+## Validación de Prop
 
 Components can specify requirements for their props, such as the types you've already seen. If a requirement is not met, Vue will warn you in the browser's JavaScript console. This is especially useful when developing a component that is intended to be used by others.
 

@@ -291,11 +291,11 @@ export const sidebar = {
           link: '/guide/typescript/overview'
         },
         {
-          text: 'TS con la Composition API',
+          text: 'TS con Composition API',
           link: '/guide/typescript/composition-api'
         },
         {
-          text: 'TS con la Options API',
+          text: 'TS con Options API',
           link: '/guide/typescript/options-api'
         }
       ]

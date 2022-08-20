@@ -1,4 +1,4 @@
-# Reactivity Transform
+# Transformación de la Reactividad
 
 :::warning Experimental Feature
 Reactivity Transform is currently an experimental feature. It is disabled by default and requires [explicit opt-in](#explicit-opt-in). It may also change before being finalized. To stay up-to-date, keep an eye on its [proposal and discussion on GitHub](https://github.com/vuejs/rfcs/discussions/369).
@@ -279,7 +279,7 @@ Since the macros are available globally, their types need to be explicitly refer
 
 When explicitly importing the macros from `vue/macros`, the type will work without declaring the globals.
 
-## Explicit Opt-in
+## Opt-in Explícito
 
 Reactivity Transform is currently disabled by default and requires explicit opt-in. In addition, all of the following setups require `vue@^3.2.25`.
 
