@@ -35,7 +35,7 @@ const { name, intro, region, logo, proficiencies, flipLogo, website } =
 
       <p>{{ intro }}</p>
 
-      <h4 v-if="hero">Proficiencies</h4>
+      <h4 v-if="hero">Competencias</h4>
       <p v-if="hero">
         <span class="proficiency" v-for="p in proficiencies">{{ p }}</span>
       </p>

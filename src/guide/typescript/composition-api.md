@@ -1,10 +1,10 @@
-# TypeScript with Composition API
+# TypeScript con la Composition API
 
 > This page assumes you've already read the overview on [Using Vue with TypeScript](./overview).
 
-## Typing Component Props
+## Escritura de las Props de Componentes
 
-### Using `<script setup>`
+### Usando `<script setup>`
 
 When using `<script setup>`, the `defineProps()` macro supports inferring the props types based on its argument:
 
@@ -50,20 +50,24 @@ const props = defineProps<Props>()
 </script>
 ```
 
-#### Syntax Limitations
+#### Limitaciones de la Sintaxis
 
 In order to generate the correct runtime code, the generic argument for `defineProps()` must be one of the following:
 
 - An object literal type:
 
   ```ts
-  defineProps<{ /*... */ }>()
+  defineProps<{
+    /*... */
+  }>()
   ```
 
 - A reference to an interface or object literal type **in the same file**:
 
   ```ts
-  interface Props {/* ... */}
+  interface Props {
+    /* ... */
+  }
 
   defineProps<Props>()
   ```
@@ -73,13 +77,13 @@ The interface or object literal type can contain references to types imported fr
 ```ts
 import { Props } from './other-file'
 
-// NOT supported
+// NO soportado
 defineProps<Props>()
 ```
 
 This is because Vue components are compiled in isolation and the compiler currently does not crawl imported files in order to analyze the source type. This limitation could be removed in a future release.
 
-### Props Default Values <sup class="vt-badge experimental" />
+### Valores por Defecto de las Props <sup class="vt-badge experimental" />
 
 When using type-based declaration, we lose the ability to declare default values for the props. This can be resolved by the currently experimental [Reactivity Transform](/guide/extras/reactivity-transform.html):
 
@@ -98,7 +102,7 @@ const { foo, bar = 100 } = defineProps<Props>()
 
 This behavior currently requires [explicit opt-in](/guide/extras/reactivity-transform.html#explicit-opt-in).
 
-### Without `<script setup>`
+### Sin `<script setup>`
 
 If not using `<script setup>`, it is necessary to use `defineComponent()` to enable props type inference. The type of the props object passed to `setup()` is inferred from the `props` option.
 
@@ -115,7 +119,7 @@ export default defineComponent({
 })
 ```
 
-## Typing Component Emits
+## Escritura de Emits del Componente
 
 In `<script setup>`, the `emit` function can also be typed using either runtime declaration OR type declaration:
 
@@ -147,7 +151,7 @@ export default defineComponent({
 })
 ```
 
-## Typing `ref()`
+## Escritura de `ref()`
 
 Refs infer the type from the initial value:
 
@@ -164,8 +168,7 @@ year.value = '2020'
 Sometimes we may need to specify complex types for a ref's inner value. We can do that by using the `Ref` type:
 
 ```ts
-import { ref } from 'vue'
-import type { Ref } from 'vue'
+import { ref, Ref } from 'vue'
 
 const year: Ref<string | number> = ref('2020')
 
@@ -188,7 +191,7 @@ If you specify a generic type argument but omit the initial value, the resulting
 const n = ref<number>()
 ```
 
-## Typing `reactive()`
+## Escritura de `reactive()`
 
 `reactive()` also implicitly infers the type from its argument:
 
@@ -216,7 +219,7 @@ const book: Book = reactive({ title: 'Vue 3 Guide' })
 It's not recommended to use the generic argument of `reactive()` because the returned type, which handles nested ref unwrapping, is different from the generic argument type.
 :::
 
-## Typing `computed()`
+## Escritura de `computed()`
 
 `computed()` infers its type based on the getter's return value:
 
@@ -240,7 +243,7 @@ const double = computed<number>(() => {
 })
 ```
 
-## Typing Event Handlers
+## Escritura de Manejadores de Eventos
 
 When dealing with native DOM events, it might be useful to type the argument we pass to the handler correctly. Let's take a look at this example:
 
@@ -265,13 +268,12 @@ function handleChange(event: Event) {
 }
 ```
 
-## Typing Provide / Inject
+## Escritura de Provide / Inject
 
 Provide and inject are usually performed in separate components. To properly type injected values, Vue provides an `InjectionKey` interface, which is a generic type that extends `Symbol`. It can be used to sync the type of the injected value between the provider and the consumer:
 
 ```ts
-import { provide, inject } from 'vue'
-import type { InjectionKey } from 'vue'
+import { provide, inject, InjectionKey } from 'vue'
 
 const key = Symbol() as InjectionKey<string>
 
@@ -302,9 +304,9 @@ If you are sure that the value is always provided, you can also force cast the v
 const foo = inject('foo') as string
 ```
 
-## Typing Template Refs
+## Escritura de Refs de la Plantilla
 
-Template refs should be created with an explicit generic type argument and an initial value of `null`:
+Las refs de las plantillas deben ser creadas con un argumento de tipo genérico explícito y un valor inicial de `null`:
 
 ```vue
 <script setup lang="ts">
@@ -324,9 +326,9 @@ onMounted(() => {
 
 Note that for strict type safety, it is necessary to use optional chaining or type guards when accessing `el.value`. This is because the initial ref value is `null` until the component is mounted, and it can also be set to `null` if the referenced element is unmounted by `v-if`.
 
-## Typing Component Template Refs
+## Escritura de Refs de la Plantilla del Componente
 
-Sometimes you might need to annotate a template ref for a child component in order to call its public method. For example, we have a `MyModal` child component with a method that opens the modal:
+A veces puede ser necesario añadir una anotación a la plantilla de un componente hijo para llamar a su método público. Por ejemplo, tenemos un componente hijo `MyModal` con un método que abre el modal:
 
 ```vue
 <!-- MyModal.vue -->

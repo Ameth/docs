@@ -51,7 +51,7 @@ Our default tooling setups use the runtime-only build since all templates in SFC
 
 If you are looking for a lighter-weight alternative for no-build-step usage, check out [petite-vue](https://github.com/vuejs/petite-vue).
 
-## IDE Support
+## Soporte para IDE
 
 - The recommended IDE setup is [VSCode](https://code.visualstudio.com/) + the [Volar](https://github.com/johnsoncodehk/volar) extension. Volar provides syntax highlighting, TypeScript support, and intellisense for template expressions and component props.
 

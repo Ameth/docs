@@ -11,7 +11,7 @@ During development, Vue provides a number of features to improve the development
 
 However, these features become useless in production. Some of the warning checks can also incur a small amount of performance overhead. When deploying to production, we should drop all the unused, development-only code branches for smaller payload size and better performance.
 
-## Without Build Tools
+## Sin Herramientas de Compilación
 
 If you are using Vue without a build tool by loading it from a CDN or self-hosted script, make sure to use the production build (dist files that end in `.prod.js`) when deploying to production. Production builds are pre-minified with all development-only code branches removed.
 

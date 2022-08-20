@@ -13,7 +13,7 @@ let vuejobs = $ref<HTMLElement>()
 let visible = $ref(false)
 
 onMounted(async () => {
-  // only render when entering view
+  // sólo se renderiza al entrar en la vista
   const observer = new IntersectionObserver(
     (entries) => {
       if (entries[0].isIntersecting) {
@@ -26,10 +26,10 @@ onMounted(async () => {
   observer.observe(vuejobs)
   onUnmounted(() => observer.disconnect())
 
-  // load data
+  // cargar datos
   if (!openings.length) {
     const items = await (await fetch(`${base}`)).json()
-    // choose two random items
+    // elegir dos elementos al azar
     if (items && items.length) {
       openings = items.sort(() => 0.5 - Math.random()).slice(0, 2)
     }

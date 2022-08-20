@@ -423,7 +423,7 @@ The `true-value` and `false-value` attributes don't affect the input's `value` a
 
 `v-model` supports value bindings of non-string values as well! In the above example, when the option is selected, `selected` will be set to the object literal value of `{ number: 123 }`.
 
-## Modifiers
+## Modificadores
 
 ### `.lazy`
 
