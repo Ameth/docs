@@ -152,7 +152,7 @@ import { myDirective as vMyDirective } from './MyDirective.js'
 </script>
 ```
 
-## defineProps() & defineEmits()
+## defineProps() y defineEmits()
 
 To declare options like `props` and `emits` with full type inference support, we can use the `defineProps` and `defineEmits` APIs, which are automatically available inside `<script setup>`:
 
