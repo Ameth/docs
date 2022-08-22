@@ -313,24 +313,24 @@ function BaseLayout(slots) {
 </base-layout>
 ```
 
-Tenga en cuenta que la expresión está sujeta a las [restricciones sintácticas](/guide/essentials/template-syntax.html#directivas) de los argumentos de la directiva dinámica.
+Ten en cuenta que la expresión está sujeta a las [restricciones sintácticas](/guide/essentials/template-syntax.html#directivas) de los argumentos de la directiva dinámica.
 
-## Scoped Slots
+## Slots con Ámbito de Aplicación
 
-As discussed in [Render Scope](#render-scope), slot content does not have access to state in the child component.
+Como se discutió en [Ámbito de Renderizado](#ambito-de-renderizado), el contenido de los slots no tiene acceso al estado del componente hijo.
 
-However, there are cases where it could be useful if a slot's content can make use of data from both the parent scope and the child scope. To achieve that, we need a way for the child to pass data to a slot when rendering it.
+Pero hay casos en los que puede ser útil que el contenido de un slot pueda hacer uso de datos tanto del ámbito padre como del ámbito hijo. Para conseguirlo, necesitamos una forma de que el hijo pase datos a un slot cuando lo renderice.
 
-In fact, we can do exactly that - we can pass attributes to a slot outlet just like passing props to a component:
+En efecto, podemos hacer exactamente eso: podemos pasar atributos a una salida de slots igual que pasamos props a un componente:
 
 ```vue-html
-<!-- <MyComponent> template -->
+<!-- plantilla <MyComponent> -->
 <div>
   <slot :text="greetingMessage" :count="1"></slot>
 </div>
 ```
 
-Receiving the slot props is a bit different when using a single default slot vs. using named slots. We are going to show how to receive props using a single default slot first, by using `v-slot` directly on the child component tag:
+La recepción de los props de los slots es un poco diferente cuando se utiliza un único slot por defecto frente a la utilización de slots asignados. Mostraremos primero cómo recibir props usando un slot default único, usando `v-slot` directamente en la etiqueta del componente hijo:
 
 ```vue-html
 <MyComponent v-slot="slotProps">
@@ -353,13 +353,13 @@ Receiving the slot props is a bit different when using a single default slot vs.
 
 </div>
 
-The props passed to the slot by the child are available as the value of the corresponding `v-slot` directive, which can be accessed by expressions inside the slot.
+Las props pasadas al slot por el hijo están disponibles como el valor de la directiva `v-slot` correspondiente, a la que se puede acceder mediante expresiones dentro del slot.
 
-You can think of a scoped slot as a function being passed into the child component. The child component then calls it, passing props as arguments:
+Puedes pensar en un slot de ámbito como una función que se pasa al componente hijo. El componente hijo la llama, pasando los accesorios como argumentos:
 
 ```js
 MyComponent({
-  // passing the default slot, but as a function
+  // pasando el slot default, pero como una función
   default: (slotProps) => {
     return `${slotProps.text} ${slotProps.count}`
   }
@@ -368,15 +368,15 @@ MyComponent({
 function MyComponent(slots) {
   const greetingMessage = 'hello'
   return `<div>${
-    // call the slot function with props!
+    // ¡llama a la función slot con props!
     slots.default({ text: greetingMessage, count: 1 })
   }</div>`
 }
 ```
 
-In fact, this is very close to how scoped slots are compiled, and how you would use scoped slots in manual [render functions](/guide/extras/render-function.html).
+De hecho, esto es muy parecido a cómo se compilan los slots de ámbito, y cómo se utilizarían los slots de ámbito en las [Funciones de Renderizado](/guide/extras/render-function.html) manuales.
 
-Notice how `v-slot="slotProps"` matches the slot function signature. Just like with function arguments, we can use destructuring in `v-slot`:
+Observa cómo `v-slot="slotProps"` coincide con la firma de la función slot. Al igual que con los argumentos de las funciones, podemos utilizar la desestructuración en `v-slot`:
 
 ```vue-html
 <MyComponent v-slot="{ text, count }">
@@ -384,9 +384,9 @@ Notice how `v-slot="slotProps"` matches the slot function signature. Just like w
 </MyComponent>
 ```
 
-### Named Scoped Slots
+### Slots de Ámbito Asignado
 
-Named scoped slots work similarly - slot props are accessible as the value of the `v-slot` directive: `v-slot:name="slotProps"`. When using the shorthand, it looks like this:
+Los slots de ámbito asignado funcionan de forma similar; las props de los slots son accesibles como el valor de la directiva `v-slot`: `v-slot:name="slotProps"`. Cuando se utiliza la abreviatura, se ve así:
 
 ```vue-html
 <MyComponent>
@@ -404,30 +404,30 @@ Named scoped slots work similarly - slot props are accessible as the value of th
 </MyComponent>
 ```
 
-Passing props to a named slot:
+Pasando props a un slot asignado:
 
 ```vue-html
-<slot name="header" message="hello"></slot>
+<slot name="header" message="hola"></slot>
 ```
 
-Note the `name` of a slot won't be included in the props because it is reserved - so the resulting `headerProps` would be `{ message: 'hello' }`.
+Ten en cuenta que el `nombre` de un slot no se incluirá en las props porque está reservado; así que el `headerProps` resultante sería `{ message: 'hola' }`.
 
-### Fancy List Example
+### Ejemplo de Lista Elegante
 
-You may be wondering what would be a good use case for scoped slots. Here's an example: imagine a `<FancyList>` component that renders a list of items - it may encapsulate the logic for loading remote data, using the data to display a list, or even advanced features like pagination or infinite scrolling. However, we want it to be flexible with how each item looks and leave the styling of each item to the parent component consuming it. So the desired usage may look like this:
+Te estarás preguntando cuál sería un buen caso de uso para los slots de ámbito. Aquí tienes un ejemplo: imagina un componente `<FancyList>` que muestra una lista de elementos; puede encapsular la lógica para cargar datos remotos, utilizar los datos para mostrar una lista, o incluso características avanzadas como la paginación o el desplazamiento infinito. Sin embargo, queremos que sea flexible con el aspecto de cada elemento y dejar el estilo de cada elemento al componente padre que lo consume. Así que el uso deseado puede ser así:
 
 ```vue-html
 <FancyList :api-url="url" :per-page="10">
   <template #item="{ body, username, likes }">
     <div class="item">
       <p>{{ body }}</p>
-      <p>by {{ username }} | {{ likes }} likes</p>
+      <p>por {{ username }} | {{ likes }} me gusta</p>
     </div>
   </template>
 </FancyList>
 ```
 
-Inside `<FancyList>`, we can render the same `<slot>` multiple times with different item data (notice we are using `v-bind` to pass an object as slot props):
+Dentro de `<FancyList>`, podemos renderizar el mismo `<slot>` varias veces con diferentes datos de los ítems (fíjate que estamos usando `v-bind` para pasar un objeto como props del slot):
 
 ```vue-html
 <ul>
@@ -448,13 +448,13 @@ Inside `<FancyList>`, we can render the same `<slot>` multiple times with differ
 
 </div>
 
-### Renderless Components
+### Componentes sin Renderizado
 
-The `<FancyList>` use case we discussed above encapsulates both reusable logic (data fetching, pagination etc.) and visual output, while delegating part of the visual output to the consumer component via scoped slots.
+El caso de uso de `<FancyList>` que comentamos anteriormente incluye tanto la lógica reutilizable (obtención de datos, paginación, etc.) como la salida visual, mientras que delega parte de la salida visual al componente consumidor a través de slots de ámbito.
 
-If we push this concept a bit further, we can come up with components that only encapsulate logic and do not render anything by themselves - visual output is fully delegated to the consumer component with scoped slots. We call this type of component a **Renderless Component**.
+Si llevamos este concepto un poco más allá, podemos crear componentes que sólo encapsulen la lógica y no rendericen nada por sí mismos; la salida visual se delega completamente en el componente consumidor con slots de ámbito. Llamamos a este tipo de componentes un **Componente sin Renderizado**.
 
-An example renderless component could be one that encapsulates the logic of tracking the current mouse position:
+Un ejemplo de componente sin renderizado podría ser uno que encapsule la lógica del seguimiento de la posición actual del ratón:
 
 ```vue-html
 <MouseTracker v-slot="{ x, y }">
@@ -473,6 +473,6 @@ An example renderless component could be one that encapsulates the logic of trac
 
 </div>
 
-While an interesting pattern, most of what can be achieved with Renderless Components can be achieved in a more efficient fashion with Composition API, without incurring the overhead of extra component nesting. Later, we will see how we can implement the same mouse tracking functionality as a [Composable](/guide/reusability/composables.html).
+Aunque se trata de un patrón interesante, la mayor parte de lo que se puede conseguir con los componentes sin renderizado se puede lograr de una manera más eficiente con la Composition API, sin incurrir en la sobrecarga de la anidación de componentes adicionales. Más adelante, veremos cómo podemos implementar la misma funcionalidad de seguimiento del ratón como un [Composable] (/guide/reusability/composables.html).
 
-That said, scoped slots are still useful in cases where we need to both encapsulate logic **and** compose visual output, like in the `<FancyList>` example.
+Dicho esto, los slots de ámbito siguen siendo útiles en los casos en los que necesitamos encapsular la lógica **y** componer la salida visual, como en el ejemplo de `<FancyList>`.

@@ -13,7 +13,7 @@ const selected = ref('')
 const multiSelected = ref([])
 </script>
 
-# Enlaces de Entrada de Formularios
+# Vinculación de Entradas de Formularios
 
 <div class="options-api">
 <VueSchoolLink href="https://vueschool.io/lessons/user-inputs-vue-devtools-in-vue-3" title=" Lección gratuita sobre Entradas del Usuario con Vue.js"/>
