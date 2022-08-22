@@ -175,7 +175,7 @@ const emit = defineEmits(['change', 'delete'])
 
 - The options passed to `defineProps` and `defineEmits` will be hoisted out of setup into module scope. Therefore, the options cannot reference local variables declared in setup scope. Doing so will result in a compile error. However, it _can_ reference imported bindings since they are in the module scope as well.
 
-If you are using TypeScript, it is also possible to [declare props and emits using pure type annotations](#typescript-only-features).
+If you are using TypeScript, it is also possible to [declare props and emits using pure type annotations](#funcionalidades-exclusivas-de-typeScript).
 
 ## defineExpose()
 
@@ -255,7 +255,7 @@ In addition, the awaited expression will be automatically compiled in a format t
 `async setup()` must be used in combination with `Suspense`, which is currently still an experimental feature. We plan to finalize and document it in a future release - but if you are curious now, you can refer to its [tests](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts) to see how it works.
 :::
 
-## TypeScript-only Features <sup class="vt-badge ts" />
+## Funcionalidades Exclusivas de TypeScript <sup class="vt-badge ts" />
 
 ### Type-only props/emit declarations
 

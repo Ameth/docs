@@ -173,7 +173,7 @@ Si estás creando tus plantillas directamente en un DOM (por ejemplo, como el co
 <button-counter></button-counter>
 ```
 
-Consulta [análisis de advertencias de la plantilla del DOM](#analisis-de-advertencias-de-la-plantilla-del-dom) para más detalles.
+Consulta [análisis de advertencias de la plantilla del DOM](#advertencias-sobre-el-procesamiento-de-las-plantillas-del-dom) para más detalles.
 
 ## Pasando Props
 
@@ -538,7 +538,7 @@ También puedes utilizar el atributo "is" para crear elementos HTML normales.
 
 Cuando se cambia entre varios componentes con `<component :is="...">`, un componente será desmontado cuando se cambie de lugar. Podemos forzar que los componentes inactivos permanezcan "vivos" con el componente integrado [`<KeepAlive>`](/guide/built-ins/keep-alive.html).
 
-## Análisis de Advertencias de la Plantilla del DOM
+## Advertencias sobre el Procesamiento de las Plantillas del DOM
 
 Si estás escribiendo tus plantillas de Vue directamente en el DOM, Vue tendrá que recuperar la cadena de la plantilla desde el DOM. Esto conduce a algunas advertencias debido al comportamiento de análisis nativo de HTML de los navegadores.
 

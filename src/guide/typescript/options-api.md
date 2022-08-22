@@ -95,7 +95,7 @@ export default defineComponent({
 
 Esto evita que TypeScript tenga que inferir el tipo de `this` dentro de estas funciones, lo que, desafortunadamente, puede hacer que la inferencia de tipo falle. Esta era una [limitación de diseño](https://github.com/microsoft/TypeScript/issues/38845) previa, y ahora ha sido mejorada en [TypeScript 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods).
 
-## Escritura de Emisiones del Componente
+## Escritura de Emits del Componente
 
 Podemos declarar el tipo de payload esperado para un evento emitido usando la sintaxis de objeto de la opción `emits`. Además, todos los eventos emitidos no declarados lanzarán un error de tipo cuando sean llamados:
 

@@ -1,8 +1,8 @@
 # Registro de Componentes
 
-<VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="Lección gratuita de Registro de Componentes de Vue.js"/>
-
 > Esta página asume que ya has leído los [Fundamentos de los Componentes](/guide/essentials/component-basics). Léelo primero si eres nuevo en el tema de componentes.
+
+<VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="Lección gratuita de Registro de Componentes de Vue.js"/>
 
 Un componente de Vue necesita ser "registrado" para que Vue sepa dónde localizar su implementación cuando se encuentre en una plantilla. Hay dos maneras de registrar componentes: global y local.
 
@@ -136,6 +136,6 @@ A lo largo de la guía, utilizamos nombres PascalCase al registrar componentes. 
 
 2. `<PascalCase />` hace más obvio que se trata de un componente Vue en lugar de un elemento HTML nativo en las plantillas. También diferencia los componentes Vue de los elementos personalizados (componentes web).
 
-Este es el estilo recomendado cuando se trabaja con plantillas SFC o de cadena. Sin embargo, como se discute en [Análisis de Advertencias de la Plantilla del DOM](/guide/essentials/component-basics.html#analisis-de-advertencias-de-la-plantilla-del-dom), las etiquetas PascalCase no son utilizables en las plantillas del DOM.
+Este es el estilo recomendado cuando se trabaja con plantillas SFC o de cadena. Sin embargo, como se discute en [Análisis de Advertencias de la Plantilla del DOM](/guide/essentials/component-basics.html#advertencias-sobre-el-procesamiento-de-las-plantillas-del-dom), las etiquetas PascalCase no son utilizables en las plantillas del DOM.
 
 Por suerte, Vue soporta la resolución de etiquetas kebab-case a componentes registrados usando PascalCase. Esto significa que un componente registrado como `MyComponent` puede ser referenciado en la plantilla a través de `<MyComponent>` y `<my-component>`. Esto nos permite utilizar el mismo código de registro de componentes JavaScript independientemente de la fuente de la plantilla.

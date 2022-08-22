@@ -8,17 +8,17 @@ Si estás familiarizado con los conceptos de Virtual DOM y prefieres la potencia
 
 ## Interpolación de Texto
 
-La forma más básica de vinculación de datos es la interpolación de texto utilizando la sintaxis de "Mustache" o bigotes (dobles llaves):
+La forma más básica de vinculación de datos es la interpolación de texto utilizando la sintaxis de "Mostacho" o bigotes (dobles llaves):
 
 ```vue-html
 <span>Mensaje: {{ msg }}</span>
 ```
 
-La etiqueta del mustache se reemplazará con el valor de la propiedad `msg` de la instancia del componente correspondiente. También se actualizará cada vez que cambie la propiedad `msg`.
+La etiqueta del mostacho se reemplazará con el valor de la propiedad `msg` de la instancia del componente correspondiente. También se actualizará cada vez que cambie la propiedad `msg`.
 
 ## HTML Puro
 
-Los dobles mustaches interpretan los datos como texto sin formato, no como HTML. Para generar HTML real, necesitarás usar la [directiva `v-html`](/api/built-in-directives.html#v-html):
+Los dobles mostachos interpretan los datos como texto sin formato, no como HTML. Para generar HTML real, necesitarás usar la [directiva `v-html`](/api/built-in-directives.html#v-html):
 
 ```vue-html
 <p>Usando interpolación: {{ rawHtml }}</p>
@@ -44,7 +44,7 @@ El HTML arbitrario renderizado dinámicamente en tu sitio web puede ser muy peli
 
 ## Vinculación de Atributos
 
-Los mustaches no se pueden usar dentro de los atributos HTML. En su lugar, utiliza una directiva [`v-bind`](/api/built-in-directives.html#v-bind):
+Los mostachos no se pueden usar dentro de los atributos HTML. En su lugar, utiliza una directiva [`v-bind`](/api/built-in-directives.html#v-bind):
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
@@ -129,7 +129,7 @@ Estas expresiones se evaluarán como JavaScript en el ámbito de datos de la ins
 
 En las plantillas de Vue, las expresiones de JavaScript se pueden usar en las siguientes posiciones:
 
-- Interpolaciones de texto interior (mustaches)
+- Interpolaciones de texto interior (mostachos)
 - En el valor del atributo de cualquier directiva de Vue (atributos especiales que comienzan con `v-`)
 
 ### Solo Expresiones
