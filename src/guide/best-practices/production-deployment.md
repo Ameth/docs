@@ -1,6 +1,6 @@
-# Production Deployment
+# Implementación de Producción (Deployment)
 
-## Development vs. Production
+## Desarrollo vs. Producción
 
 During development, Vue provides a number of features to improve the development experience:
 
@@ -20,7 +20,7 @@ If you are using Vue without a build tool by loading it from a CDN or self-hoste
 
 Consult the [dist file guide](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) for more details.
 
-## With Build Tools
+## Con Herramientas de Compilación
 
 Projects scaffolded via `create-vue` (based on Vite) or Vue CLI (based on webpack) are pre-configured for production builds.
 
@@ -36,7 +36,7 @@ Additional references:
 - [Vite deployment guide](https://vitejs.dev/guide/static-deploy.html)
 - [Vue CLI deployment guide](https://cli.vuejs.org/guide/deployment.html)
 
-## Tracking Runtime Errors
+## Seguimiento de Errores en Tiempo de Ejecución
 
 The [app-level error handler](/api/application.html#app-config-errorhandler) can be used to report errors to tracking services:
 

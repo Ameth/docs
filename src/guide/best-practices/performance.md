@@ -2,9 +2,9 @@
 outline: deep
 ---
 
-# Performance
+# Guía de Optimización del Rendimiento
 
-## Overview
+## Generalidades
 
 Vue is designed to be performant for most common use cases without much need for manual optimizations. However, there are always challenging scenarios where extra fine-tuning is needed. In this section, we will discuss what you should pay attention to when it comes to performance in a Vue application.
 
@@ -20,7 +20,7 @@ While it would be ideal to maximize both, different frontend architectures tend 
 
 - Jason Miller discusses the types of web applications and their respective ideal implementation / delivery in [Application Holotypes](https://jasonformat.com/application-holotypes/).
 
-## Profiling Options
+## Opciones de Configuración de Perfiles
 
 To improve performance, we need to first know how to measure it. There are a number of great tools that can help in this regard:
 
@@ -35,11 +35,11 @@ For profiling performance during local development:
   - [`app.config.performance`](/api/application.html#app-config-performance) enables Vue-specific performance markers in Chrome DevTools' performance timeline.
 - [Vue DevTools Extension](/guide/scaling-up/tooling.html#browser-devtools) also provides a performance profiling feature.
 
-## Page Load Optimizations
+## Optimizaciones para la Carga de Página
 
 There are many framework-agnostic aspects for optimizing page load performance - check out [this web.dev guide](https://web.dev/fast/) for a comprehensive round up. Here, we will primarily focus on techniques that are specific to Vue.
 
-### Bundle Size and Tree-shaking
+### Tamaño del Paquete y Sacudida del Árbol
 
 One of the most effective ways to improve page load performance is shipping smaller JavaScript bundles. Here are a few ways to reduce bundle size when using Vue:
 
@@ -57,7 +57,7 @@ One of the most effective ways to improve page load performance is shipping smal
 
 - If you are using Vue primarily for progressive enhancement and prefer to avoid a build step, consider using [petite-vue](https://github.com/vuejs/petite-vue) (only **6kb**) instead.
 
-### Code Splitting
+### División del Código
 
 Code splitting is where a build tool splits the application bundle into multiple smaller chunks, which can then be loaded on demand or in parallel. With proper code splitting, features required at page load can be downloaded immediately, with additional chunks being lazy loaded only when needed, thus improving performance.
 
@@ -88,9 +88,9 @@ For applications using Vue Router, it is strongly recommended to use lazy loadin
 
 Pure client-side rendering suffers from slow time-to-content. This can be mitigated with Server-Side Rendering (SSR) or Static Site Generation (SSG). Check out the [SSR Guide](/guide/scaling-up/ssr.html) for more details.
 
-## Update Optimizations
+## Optimizaciones para Actualizar
 
-### Props Stability
+### Estabilidad de las Props
 
 In Vue, a child component only updates when at least one of its received props has changed. Consider the following example:
 
@@ -122,11 +122,11 @@ Now, for most components the `active` prop will remain the same when `activeId` 
 
 `v-memo` is a built-in directive that can be used to conditionally skip the update of large sub-trees or `v-for` lists. Consult its [API reference](/api/built-in-directives.html#v-memo) for more details.
 
-## General Optimizations
+## Optimizaciones Generales
 
 > The following tips affect both page load and update performance.
 
-### Virtualize Large Lists
+### Virtualizar Grandes Listas
 
 One of the most common performance issues in all frontend applications is rendering large lists. No matter how performant a framework is, rendering a list with thousands of items **will** be slow due to the sheer number of DOM nodes that the browser needs to handle.
 
@@ -137,7 +137,7 @@ Implementing list virtualization isn't easy, luckily there are existing communit
 - [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller)
 - [vue-virtual-scroll-grid](https://github.com/rocwang/vue-virtual-scroll-grid)
 
-### Reduce Reactivity Overhead for Large Immutable Structures
+### Reducción de la Sobrecarga de Reactividad en Estructuras Inmutables de Gran Tamaño
 
 Vue's reactivity system is deep by default. While this makes state management intuitive, it does create a certain level of overhead when the data size is large, because every property access triggers proxy traps that perform dependency tracking. This typically becomes noticeable when dealing with large arrays of deeply nested objects, where a single render needs to access 100,000+ properties, so it should only affect very specific use cases.
 
@@ -165,7 +165,7 @@ shallowArray.value = [
 ]
 ```
 
-### Avoid Unnecessary Component Abstractions
+### Evite las Abstracciones Innecesarias de los Componentes
 
 Sometimes we may create [renderless components](/guide/components/slots.html#renderless-components) or higher-order components (i.e. components that render other components with extra props) for better abstraction or code organization. While there is nothing wrong with this, do keep in mind that component instances are much more expensive than plain DOM nodes, and creating too many of them due to abstraction patterns will incur performance costs.
 

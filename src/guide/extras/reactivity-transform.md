@@ -8,7 +8,7 @@ Reactivity Transform is currently an experimental feature. It is disabled by def
 Reactivity Transform is a Composition-API-specific feature and requires a build step.
 :::
 
-## Refs vs. Reactive Variables
+## Refs vs. Variables Reactivas
 
 Ever since the introduction of the Composition API, one of the primary unresolved questions is the use of refs vs. reactive objects. It's easy to lose reactivity when destructuring reactive objects, while it can be cumbersome to use `.value` everywhere when using refs. Also, `.value` is easy to miss if not using a type system.
 
@@ -62,7 +62,7 @@ import { $ref } from 'vue/macros'
 let count = $ref(0)
 ```
 
-## Destructuring with `$()`
+## Desestructuración con `$()`
 
 It is common for a composition function to return an object of refs, and use destructuring to retrieve these refs. For this purpose, reactivity transform provides the **`$()`** macro:
 
@@ -91,7 +91,7 @@ Note that if `x` is already a ref, `toRef(__temp, 'x')` will simply return it as
 
 `$()` destructure works on both reactive objects **and** plain objects containing refs.
 
-## Convert Existing Refs to Reactive Variables with `$()`
+## Convertir las Referencias Existentes en Variables Reactivas con `$()`
 
 In some cases we may have wrapped functions that also return refs. However, the Vue compiler won't be able to know ahead of time that a function is going to return a ref. In such cases, the `$()` macro can also be used to convert any existing refs into reactive variables:
 
@@ -103,7 +103,7 @@ function myCreateRef() {
 let count = $(myCreateRef())
 ```
 
-## Reactive Props Destructure
+## Desestructuración de Props Reactivas
 
 There are two pain points with the current `defineProps()` usage in `<script setup>`:
 
@@ -154,11 +154,11 @@ export default {
 }
 ```
 
-## Retaining Reactivity Across Function Boundaries
+## Mantener la Reactividad a través de los Límites de la Función
 
 While reactive variables relieve us from having to use `.value` everywhere, it creates an issue of "reactivity loss" when we pass reactive variables across function boundaries. This can happen in two cases:
 
-### Passing into function as argument
+### Introducir una Función como Argumento
 
 Given a function that expects a ref as an argument, e.g.:
 
@@ -199,7 +199,7 @@ trackChange(count)
 
 As we can see, `$$()` is a macro that serves as an **escape hint**: reactive variables inside `$$()` will not get `.value` appended.
 
-### Returning inside function scope
+### Retorno en el Ámbito de la Función
 
 Reactivity can also be lost if reactive variables are used directly in a returned expression:
 
@@ -246,7 +246,7 @@ function useMouse() {
 }
 ```
 
-### Using `$$()` on destructured props
+### Uso de `$()` en Props Destructuradas
 
 `$$()` works on destructured props since they are reactive variables as well. The compiler will convert it with `toRef` for efficiency:
 
@@ -265,7 +265,7 @@ setup(props) {
 }
 ```
 
-## TypeScript Integration <sup class="vt-badge ts" />
+## Integración de TypeScript <sup class="vt-badge ts" />
 
 Vue provides typings for these macros (available globally) and all types will work as expected. There are no incompatibilities with standard TypeScript semantics, so the syntax will work with all existing tooling.
 
@@ -322,7 +322,7 @@ module.exports = {
 }
 ```
 
-### Plain `webpack` + `vue-loader`
+### `webpack` Plano + `vue-loader`
 
 - Currently only affects SFCs
 - Requires `vue-loader@>=17.0.0`

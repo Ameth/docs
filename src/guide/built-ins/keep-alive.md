@@ -6,7 +6,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 `<KeepAlive>` is a built-in component that allows us to conditionally cache component instances when dynamically switching between multiple components.
 
-## Basic Usage
+## Uso Básico
 
 In the Component Basics chapter, we introduced the syntax for [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components), using the `<component>` special element:
 
@@ -77,7 +77,7 @@ The match is checked against the component's [`name`](/api/options-misc.html#nam
 Since version 3.2.34, a single-file component using `<script setup>` will automatically infer its `name` option based on the filename, removing the need to manually declare the name.
 :::
 
-## Max Cached Instances
+## Instancias Máximas en Caché
 
 We can limit the maximum number of component instances that can be cached via the `max` prop. When `max` is specified, `<KeepAlive>` behaves like an [LRU cache](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>): if the number of cached instances is about to exceed the specified max count, the least recently accessed cached instance will be destroyed to make room for the new one.
 
@@ -87,7 +87,7 @@ We can limit the maximum number of component instances that can be cached via th
 </KeepAlive>
 ```
 
-## Lifecycle of Cached Instance
+## Ciclo de Vida de la Instancia en Caché
 
 When a component instance is removed from the DOM but is part of a component tree cached by `<KeepAlive>`, it goes into a **deactivated** state instead of being unmounted. When a component instance is inserted into the DOM as part of a cached tree, it is **activated**.
 

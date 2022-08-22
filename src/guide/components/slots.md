@@ -26,7 +26,7 @@ La plantilla de `<FancyButton>` tiene el siguiente aspecto:
 
 El elemento `<slot>` es una **salida de slot** que indica dónde se debe renderizar el contenido del **slot** proporcionado por el padre.
 
-![slot diagram](./images/slots.png)
+![diagrama del slot](./images/slots.png)
 
 <!-- https://www.figma.com/file/LjKTYVL97Ck6TEmBbstavX/slot -->
 
@@ -207,7 +207,7 @@ Para pasar un slot asignado, necesitamos usar un elemento `<template>` con la di
 
 `v-slot` tiene una abreviatura dedicada `#`, por lo que `<plantilla v-slot:header>` puede acortarse a sólo `<plantilla #header>`. Piensa en ello como "renderizar este fragmento de plantilla en el slot 'header' del componente hijo".
 
-![named slots diagram](./images/named-slots.png)
+![diagrama de slots asignados](./images/named-slots.png)
 
 <!-- https://www.figma.com/file/2BhP8gVZevttBu9oUmUUyz/named-slot -->
 
@@ -338,7 +338,7 @@ La recepción de los props de los slots es un poco diferente cuando se utiliza u
 </MyComponent>
 ```
 
-![scoped slots diagram](./images/scoped-slots.svg)
+![diagrama de slots de ámbito](./images/scoped-slots.svg)
 
 <!-- https://www.figma.com/file/QRneoj8eIdL1kw3WQaaEyc/scoped-slot -->
 

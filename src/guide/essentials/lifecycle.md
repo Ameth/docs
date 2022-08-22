@@ -59,7 +59,7 @@ Ten en cuenta que esto no significa que la llamada deba colocarse léxicamente d
 
 A continuación se muestra un diagrama del ciclo de vida de la instancia. En este momento no es necesario que entiendas completamente todo lo que sucede, pero a medida que aprendas y construyas más, será una referencia útil.
 
-![Component lifecycle diagram](./images/lifecycle.png)
+![Diagrama del ciclo de vida del componente](./images/lifecycle.png)
 
 <!-- https://www.figma.com/file/Xw3UeNMOralY6NV7gSjWdS/Vue-Lifecycle -->
 

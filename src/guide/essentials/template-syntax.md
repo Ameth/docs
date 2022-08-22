@@ -267,6 +267,6 @@ Verás otros ejemplos de modificadores más adelante, [para `v-on`](./event-hand
 
 Y finalmente, aquí está la sintaxis completa de la directiva:
 
-![directive syntax graph](./images/directive.png)
+![gráfico de la sintaxis de la directiva](./images/directive.png)
 
 <!-- https://www.figma.com/file/BGWUknIrtY9HOmbmad0vFr/Directive -->

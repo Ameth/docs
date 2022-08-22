@@ -1,6 +1,6 @@
-# Tooling
+# Herramientas
 
-## Try It Online
+## Pruébalo en Línea
 
 You don't need to install anything on your machine to try out Vue SFCs - there are online playgrounds that allow you to do so right in the browser:
 
@@ -13,7 +13,7 @@ You don't need to install anything on your machine to try out Vue SFCs - there a
 
 It is also recommended to use these online playgrounds to provide reproductions when reporting bugs.
 
-## Project Scaffolding
+## Andamiaje de Proyectos
 
 ### Vite
 
@@ -39,7 +39,7 @@ For information on migrating from Vue CLI to Vite:
 - [Vue CLI -> Vite Migration Guide from VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
 - [Tools / Plugins that help with auto migration](https://github.com/vitejs/awesome-vite#vue-cli)
 
-### Note on In-Browser Template Compilation
+### Nota sobre la Compilación de Plantillas en el Navegador
 
 When using Vue without a build step, component templates are written either directly in the page's HTML or as inlined JavaScript strings. In such cases, Vue needs to ship the template compiler to the browser in order to perform on-the-fly template compilation. On the other hand, the compiler would be unnecessary if we pre-compile the templates with a build step. To reduce client bundle size, Vue provides [different "builds"](https://unpkg.com/browse/vue@3/dist/) optimized for different use cases.
 
@@ -69,13 +69,13 @@ If you are looking for a lighter-weight alternative for no-build-step usage, che
 
   - emacs support via [lsp-mode](https://emacs-lsp.github.io/lsp-mode/page/lsp-volar/)
 
-## Browser Devtools
+## Devtools del Navegador
 
 <VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Free Vue.js Devtools Lesson"/>
 
 The Vue browser devtools extension allows you to explore a Vue app's component tree, inspect the state of individual components, track state management events, and profile performance.
 
-![devtools screenshot](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
+![Captura de pantalla de devtools](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
 
 - [Documentation](https://devtools.vuejs.org/)
 - [Chrome Extension](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
@@ -100,7 +100,7 @@ Main article: [Testing Guide](/guide/scaling-up/testing).
 
 - [Jest](https://jestjs.io/) can be made to work with Vite via [vite-jest](https://github.com/sodatea/vite-jest). However, this is only recommended if you have existing Jest-based test suites that you need to migrate over to a Vite-based setup, as Vitest provides similar functionalities with a much more efficient integration.
 
-## Linting
+## Limpieza (Linting)
 
 The Vue team maintains [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue), an [ESLint](https://eslint.org/) plugin that supports SFC-specific linting rules.
 
@@ -114,13 +114,13 @@ Users previously using Vue CLI may be used to having linters configured via webp
 
 4. (Optional) Setup tools like [lint-staged](https://github.com/okonet/lint-staged) to automatically lint modified files on git commit.
 
-## Formatting
+## Formateo (Formatting)
 
 - The [Volar](https://github.com/johnsoncodehk/volar) VSCode extension provides formatting for Vue SFCs out of the box.
 
 - Alternatively, [Prettier](https://prettier.io/) provides built-in Vue SFC formatting support.
 
-## SFC Custom Block Integrations
+## Integraciones de Bloques Personalizados del SFC
 
 Custom blocks are compiled into imports to the same Vue file with different request queries. It is up to the underlying build tool to handle these import requests.
 
@@ -128,7 +128,7 @@ Custom blocks are compiled into imports to the same Vue file with different requ
 
 - If using Vue CLI or plain webpack, a webpack loader should be configured to transform the matched blocks. [Example](https://vue-loader.vuejs.org/guide/custom-blocks.html)
 
-## Lower-Level Packages
+## Paquetes de Bajo Nivel
 
 ### `@vue/compiler-sfc`
 
@@ -154,7 +154,7 @@ Official plugin that provides Vue SFC support in Vite.
 
 The official loader that provides Vue SFC support in webpack. If you are using Vue CLI, also see [docs on modifying `vue-loader` options in Vue CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
 
-## Other Online Playgrounds
+## Otros Patios de Juego en Línea
 
 - [VueUse Playground](https://play.vueuse.org)
 - [Vue + Vite on Repl.it](https://replit.com/@templates/VueJS-with-Vite)
@@ -163,4 +163,4 @@ The official loader that provides Vue SFC support in webpack. If you are using V
 - [Vue on Components.studio](https://components.studio/create/vue3)
 - [Vue on WebComponents.dev](https://webcomponents.dev/create/cevue)
 
-<!-- TODO ## Backend Framework Integrations -->
+<!-- TODO ## Integraciones del Framework con el Backend -->

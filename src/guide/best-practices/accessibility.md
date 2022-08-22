@@ -1,4 +1,4 @@
-# Accessibility
+# Accesibilidad
 
 Web accessibility (also known as a11y) refers to the practice of creating websites that can be used by anyone — be that a person with a disability, a slow connection, outdated or broken hardware or simply someone in an unfavorable environment. For example, adding subtitles to a video would help both your deaf and hard-of-hearing users and your users who are in a loud environment and can't hear their phone. Similarly, making sure your text isn't too low contrast will help both your low-vision users and your users who are trying to use their phone in bright sunlight.
 
@@ -6,7 +6,7 @@ Ready to start but aren’t sure where?
 
 Checkout the [Planning and managing web accessibility guide](https://www.w3.org/WAI/planning-and-managing/) provided by [World Wide Web Consortium (W3C)](https://www.w3.org/)
 
-## Skip link
+## Ignorar un Enlace
 
 You should add a link at the top of each page that goes directly to the main content area so users can skip content that is repeated on multiple Web pages.
 
@@ -80,11 +80,11 @@ watch(
 
 [Read documentation on skip link to main content](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
-## Content Structure
+## Estructura de los Contenido
 
 One of the most important pieces of accessibility is making sure that design can support accessible implementation. Design should consider not only color contrast, font selection, text sizing, and language, but also how the content is structured in the application.
 
-### Headings
+### Títulos
 
 Users can navigate an application through headings. Having descriptive headings for every section of your application makes it easier for users to predict the content of each section. When it comes to headings, there are a couple of recommended accessibility practices:
 
@@ -112,7 +112,7 @@ Users can navigate an application through headings. Having descriptive headings 
 </main>
 ```
 
-### Landmarks
+### Puntos de Referencia
 
 [Landmarks](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) provide programmatic access to sections within an application. Users who rely on assistive technology can navigate to each section of the application and skip over content. You can use [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) to help you achieve this.
 
@@ -133,7 +133,7 @@ It is recommended to use landmark HTML elements with redundant landmark role att
 
 [Read more about landmarks](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 
-## Semantic Forms
+## Formas Semánticas
 
 When creating a form, you can use the following elements: `<form>`, `<label>`, `<input>`, `<textarea>`, and `<button>`
 
@@ -158,7 +158,7 @@ Labels are typically placed on top or to the left of the form fields:
 
 Notice how you can include `autocomplete='on'` on the form element and it will apply to all inputs in your form. You can also set different [values for autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for each input.
 
-### Labels
+### Etiquetas
 
 Provide labels to describe the purpose of all form control; linking `for` and `id`:
 
@@ -171,7 +171,7 @@ Provide labels to describe the purpose of all form control; linking `for` and `i
 
 If you inspect this element in your chrome developer tools and open the Accessibility tab inside the Elements tab, you will see how the input gets its name from the label:
 
-![Chrome Developer Tools showing input accessible name from label](./images/AccessibleLabelChromeDevTools.png)
+![Las herramientas de desarrollo de Chrome muestran el nombre accesible de la etiqueta](./images/AccessibleLabelChromeDevTools.png)
 
 :::warning Warning:
 Though you might have seen labels wrapping the input fields like this:
@@ -205,7 +205,7 @@ You can also give the input an accessible name with [`aria-label`](https://devel
 
 Feel free to inspect this element in Chrome DevTools to see how the accessible name has changed:
 
-![Chrome Developer Tools showing input accessible name from aria-label](./images/AccessibleARIAlabelDevTools.png)
+![Las herramientas de desarrollo de Chrome muestran el nombre accesible de aria-label](./images/AccessibleARIAlabelDevTools.png)
 
 #### `aria-labelledby`
 
@@ -235,7 +235,7 @@ Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibi
 
 <!-- <common-codepen-snippet title="Form ARIA labelledby" slug="MWJvvBe" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-![Chrome Developer Tools showing input accessible name from aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
+![Las herramientas de desarrollo de Chrome muestran el nombre accesible de aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
 
 #### `aria-describedby`
 
@@ -269,15 +269,15 @@ Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibi
 
 You can see the description by inspecting Chrome DevTools:
 
-![Chrome Developer Tools showing input accessible name from aria-labelledby and description with aria-describedby](./images/AccessibleARIAdescribedby.png)
+![Las herramientas de desarrollo de Chrome muestran el nombre accesible de aria-labelledby y la descripción con aria-describedby](./images/AccessibleARIAdescribedby.png)
 
-### Placeholder
+### Marcador de Posición (Placeholder)
 
 Avoid using placeholders as they can confuse many users.
 
 One of the issues with placeholders is that they don't meet the [color contrast criteria](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) by default; fixing the color contrast makes the placeholder look like pre-populated data in the input fields. Looking at the following example, you can see that the Last Name placeholder which meets the color contrast criteria looks like pre-populated data:
 
-![Accessible placeholder](./images/AccessiblePlaceholder.png)
+![Marcador de posición accesible](./images/AccessiblePlaceholder.png)
 
 ```vue-html
 <form
@@ -322,7 +322,7 @@ One of the issues with placeholders is that they don't meet the [color contrast 
 
 It is best to provide all the information the user needs to fill out forms outside any inputs.
 
-### Instructions
+### Instrucciones
 
 When adding instructions for your input fields, make sure to link it correctly to the input.
 You can provide additional instructions and bind multiple ids inside an [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby). This allows for more flexible design.
@@ -354,7 +354,7 @@ Alternatively, you can attach the instructions to the input with [`aria-describe
 
 <!-- <common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-### Hiding Content
+### Ocultar Contenidos
 
 Usually it is not recommended to visually hide labels, even if the input has an accessible name. However, if the functionality of the input can be understood with surrounding content, then we can hide the visual label.
 
@@ -397,7 +397,7 @@ Adding `aria-hidden="true"` will hide the element from assistive technology but 
 <p aria-hidden="true">This is hidden from screen readers.</p>
 ```
 
-### Buttons
+### Botones
 
 When using buttons inside a form, you must set the type to prevent submitting the form.
 You can also use an input to create buttons:
@@ -416,7 +416,7 @@ You can also use an input to create buttons:
 
 <!-- <common-codepen-snippet title="Form Buttons" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-### Functional Images
+### Imágenes Funcionales
 
 You can use this technique to create functional images.
 
@@ -452,7 +452,7 @@ You can use this technique to create functional images.
 
 <!-- <common-codepen-snippet title="Functional Images" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-## Standards
+## Estándares
 
 The World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) develops web accessibility standards for the different components:
 
@@ -463,11 +463,11 @@ The World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) develops 
 - [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
   - web content - used by developers, authoring tools, and accessibility evaluation tools
 
-### Web Content Accessibility Guidelines (WCAG)
+### Pautas de Accesibilidad al Contenido en la Web (WCAG)
 
 [WCAG 2.1](https://www.w3.org/TR/WCAG21/) extends on [WCAG 2.0](https://www.w3.org/TR/WCAG20/) and allows implementation of new technologies by addressing changes to the web. The W3C encourages use of the most current version of WCAG when developing or updating Web accessibility policies.
 
-#### WCAG 2.1 Four Main Guiding Principles (abbreviated as POUR):
+#### WCAG 2.1 Cuatro Principios Rectores Principales (abreviados como POUR):
 
 - [Perceivable](https://www.w3.org/TR/WCAG21/#perceivable)
   - Users must be able to perceive the information being presented
@@ -478,23 +478,23 @@ The World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) develops 
 - [Robust](https://www.w3.org/TR/WCAG21/#robust)
   - Users must be able to access the content as technologies advance
 
-#### Web Accessibility Initiative – Accessible Rich Internet Applications (WAI-ARIA)
+#### Iniciativa de Accesibilidad a la Web - Aplicaciones de Internet Enriquecidas Accesibles (WAI-ARIA)
 
 W3C's WAI-ARIA provides guidance on how to build dynamic content and advanced user interface controls.
 
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
-## Resources
+## Recursos
 
-### Documentation
+### Documentación
 
 - [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/)
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
-### Assistive Technologies
+### Tecnologías de Apoyo
 
 - Screen Readers
   - [NVDA](https://www.nvaccess.org/download/)
@@ -520,7 +520,7 @@ W3C's WAI-ARIA provides guidance on how to build dynamic content and advanced us
   - [Focus Indicator](https://chrome.google.com/webstore/detail/focus-indicator/heeoeadndnhebmfebjccbhmccmaoedlf?hl=en-US…)
   - [NerdeFocus](https://chrome.google.com/webstore/detail/nerdefocus/lpfiljldhgjecfepfljnbjnbjfhennpd?hl=en-US…)
 
-### Users
+### Usuarios
 
 The World Health Organization estimates that 15% of the world's population has some form of disability, 2-4% of them severely so. That is an estimated 1 billion people worldwide; making people with disabilities the largest minority group in the world.
 
