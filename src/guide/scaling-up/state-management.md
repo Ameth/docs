@@ -77,7 +77,7 @@ Una solución más sencilla y directa es extraer el estado compartido de los com
 
 <div class="options-api">
 
-En la Options API, los datos reactivos se declaran mediante la opción `data()`. Internamente, el objeto devuelto por `data()` se vuelve reactivo a través de la función [`reactive()`](/api/reactividad-core.html#reactive), que también está disponible como una API pública.
+En la Options API, los datos reactivos se declaran mediante la opción `data()`. Internamente, el objeto devuelto por `data()` se vuelve reactivo a través de la función [`reactive()`](/api/reactivity-core.html#reactive), que también está disponible como una API pública.
 
 </div>
 
