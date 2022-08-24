@@ -1,6 +1,6 @@
 # Slots
 
-> Esta página asume que ya has leído los [Fundamentos de los Componentes](/guide/essentials/component-basics). Léelo primero si eres nuevo en el tema de componentes.
+> Esta página supone que ya has leído los [Fundamentos de los Componentes](/guide/essentials/component-basics). Léelo primero si eres nuevo en el tema de componentes.
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Lección gratuita de Slots de Vue.js"/>
 

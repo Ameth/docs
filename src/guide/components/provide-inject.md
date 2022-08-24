@@ -1,6 +1,6 @@
 # Provide / Inject
 
-> Esta página asume que ya has leído los [Fundamentos de los Componentes](/guide/essentials/component-basics). Léelo primero si eres nuevo en el tema de componentes.
+> Esta página supone que ya has leído los [Fundamentos de los Componentes](/guide/essentials/component-basics). Léelo primero si eres nuevo en el tema de componentes.
 
 ## Profundización de Prop
 
@@ -193,7 +193,7 @@ Aquí, el componente localizará una propiedad proporcionada con la key `"messag
 
 ### Valores Default de Injection
 
-Por defecto, `inject` asume que la key inyectada se proporciona en algún lugar de la cadena padre. En el caso de que no se proporcione la key, habrá una advertencia en tiempo de ejecución.
+Por defecto, `inject` supone que la key inyectada se proporciona en algún lugar de la cadena padre. En el caso de que no se proporcione la key, habrá una advertencia en tiempo de ejecución.
 
 Si queremos que una propiedad inyectada funcione con proveedores opcionales, debemos declarar un valor por defecto, similar a las props:
 

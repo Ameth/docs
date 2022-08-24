@@ -281,7 +281,7 @@ El enlace `key` espera valores primitivos, es decir, cadenas y números. No util
 
 ## `v-for` con un Componente
 
-> Esta sección asume el conocimiento de [Componentes](/guide/essentials/component-basics). Siéntete libre de saltarla y volver más tarde.
+> Esta sección supone el conocimiento de [Componentes](/guide/essentials/component-basics). Siéntete libre de saltarla y volver más tarde.
 
 Puedes usar directamente `v-for` en un componente, como cualquier elemento normal (no olvides proporcionar una `clave`):
 
