@@ -2,28 +2,28 @@
 
 ## Enrutamiento del Lado del Cliente vs. del Lado del Servidor
 
-Routing on the server side means the server sending a response based on the URL path that the user is visiting. When we click on a link in a traditional server-rendered web app, the browser receives an HTML response from the server and reloads the entire page with the new HTML.
+El enrutamiento en el lado del servidor significa que el servidor envía una respuesta basada en la ruta de la URL que está visitando el usuario. Cuando hacemos clic en un enlace de una aplicación web tradicional renderizada por un servidor, el navegador recibe una respuesta HTML del servidor y vuelve a cargar toda la página con el nuevo HTML.
 
-In a [Single-Page Application](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA), however, the client-side JavaScript can intercept the navigation, dynamically fetch new data, and update the current page without full page reloads. This typically results in a more snappy user experience, especially for use cases that are more like actual "applications", where the user is expected to perform many interactions over a long period of time.
+Sin embargo, en una [Aplicación de una sola página](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA), el JavaScript del lado del cliente puede interceptar la navegación, obtener dinámicamente nuevos datos y actualizar la página actual sin necesidad de recargarla por completo. Esto generalmente da como resultado una experiencia de usuario más ágil, especialmente para casos de uso que se parecen más a "aplicaciones" reales, donde se espera que el usuario realice muchas interacciones durante un largo período de tiempo.
 
-In such SPAs, the "routing" is done on the client side, in the browser. A client-side router is responsible for managing the application's rendered view using browser APIs such as [History API](https://developer.mozilla.org/en-US/docs/Web/API/History) or the [`hashchange` event](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
+En estas SPA, el "enrutamiento" se realiza en el lado del cliente, en el navegador. Un enrutador del lado del cliente se encarga de administrar la vista renderizada de la aplicación utilizando las API del navegador, como la [API del historial](https://developer.mozilla.org/en-US/docs/Web/API/History) o el [evento `hashchange`](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
 
 ## Router Oficial
 
 <!-- TODO update links -->
 <div>
-  <VueSchoolLink href="https://vueschool.io/courses/vue-router-4-for-everyone" title="Free Vue Router Course">
-    Watch a Free Video Course on Vue School
+  <VueSchoolLink href="https://vueschool.io/courses/vue-router-4-for-everyone" title="Curso gratis de Vue Router">
+    Vea un curso de vídeo gratuito en Vue School
   </VueSchoolLink>
 </div>
 
-Vue is well-suited for building SPAs. For most SPAs, it's recommended to use the officially-supported [Vue Router library](https://github.com/vuejs/router). For more details, see Vue Router's [documentation](https://router.vuejs.org/).
+Vue es muy adecuado para construir SPA. Para la mayoría de las SPA, se recomienda utilizar la biblioteca oficial de [Vue Router](https://github.com/vuejs/router). Para más detalles, consulte la [documentación](https://router.vuejs.org/) de Vue Router.
 
-## Enrutamiento Simple desde Cero
+## Enrutamiento simple desde cero
 
-If you only need very simple routing and do not wish to involve a full-featured router library, you can do so with [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components) and update the current component state by listening to browser [`hashchange` events](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) or using the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History).
+Si solo necesita un enrutamiento muy simple y no desea involucrar una biblioteca de enrutamiento completa, puede hacerlo con [Componentes dinámicos](/guide/essentials/component-basics.html#componentes-dinamicos) y actualizar el estado actual del componente escuchando los [eventos de `hashchange`](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) del navegador o usando la [API de historial](https://developer.mozilla.org/en-US/docs/Web/API/History).
 
-Here's a bare-bone example:
+Aquí hay un ejemplo básico:
 
 <div class="composition-api">
 
