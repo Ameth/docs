@@ -188,7 +188,7 @@ Sin embargo, esto puede ser un poco pesado si tienes varias clases condicionales
 
 ### Con Componentes
 
-> Esta sección asume el conocimiento de [Componentes](/guide/essentials/component-basics). Siéntete libre de saltarla y volver más tarde.
+> Esta sección supone el conocimiento de [Componentes](/guide/essentials/component-basics). Siéntete libre de saltarla y volver más tarde.
 
 Cuando utilizas el atributo `class` en un componente con un único elemento raíz, esas clases se añadirán al elemento raíz del componente, y se fusionarán con cualquier clase ya existente en él.
 

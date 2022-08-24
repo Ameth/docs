@@ -1,6 +1,6 @@
 # TypeScript con Composition API
 
-> Esta página asume que ya has leído las generalidades en la sección [Usando Vue con TypeScript](./overview).
+> Esta página supone que ya has leído las generalidades en la sección [Usando Vue con TypeScript](./overview).
 
 ## Escritura de las Props de Componentes
 

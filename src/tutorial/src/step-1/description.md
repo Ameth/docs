@@ -6,7 +6,7 @@ El objetivo de este tutorial es darte rápidamente una experiencia de lo que se 
 
 ## Prerrequisitos
 
-Este tutorial asume una familiaridad básica con HTML, CSS y JavaScript. Si eres totalmente nuevo en el desarrollo front-end, puede que no sea la mejor idea saltar directamente a un framework como primer paso; ¡comprende lo básico y luego vuelve! La experiencia previa con otros frameworks ayuda, pero no es necesaria.
+Este tutorial supone una familiaridad básica con HTML, CSS y JavaScript. Si eres totalmente nuevo en el desarrollo front-end, puede que no sea la mejor idea saltar directamente a un framework como primer paso; ¡comprende lo básico y luego vuelve! La experiencia previa con otros frameworks ayuda, pero no es necesaria.
 
 ## Cómo Usar este Tutorial
 

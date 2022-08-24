@@ -168,7 +168,7 @@ Observa que estamos utilizando un enlace dinámico `:ref` para poder pasarle una
 
 ## Ref en un Componente
 
-> Esta sección asume el conocimiento de [Componentes](/guide/essentials/component-basics). Siéntete libre de saltarla y volver más tarde.
+> Esta sección supone el conocimiento de [Componentes](/guide/essentials/component-basics). Siéntete libre de saltarla y volver más tarde.
 
 `ref` también puede utilizarse en un componente hijo. En este caso la referencia será la de una instancia del componente:
 
