@@ -95,6 +95,6 @@ createApp({
 </div>
 </div>
 
-Esto se denomina "**hook** del ciclo de vida" (*enganche del ciclo de vida*) - Nos permite registrar un callback para ser llamado en ciertos momentos del ciclo de vida del componente.  Hay otros hooks como <span class="options-api">`created` y `updated`</span><span class="composition-api">`onUpdated` y `onUnmounted`</span>. Consulta <a target="_blank" href="/guide/essentials/lifecycle.html#diagrama-del-ciclo-de-vida">Diagrama del Ciclo de Vida</a> para obtener más detalles.
+Esto se denomina "**hook** del ciclo de vida" (*enganche del ciclo de vida*) - Nos permite registrar un callback para ser llamado en ciertos momentos del ciclo de vida del componente.  Hay otros hooks como <span class="options-api">`created` y `updated`</span><span class="composition-api">`onUpdated` y `onUnmounted`</span>. Consulta el <a target="_blank" href="/guide/essentials/lifecycle.html#diagrama-del-ciclo-de-vida">Diagrama del Ciclo de Vida</a> para obtener más detalles.
 
 A continuación, intenta añadir un hook <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>, accede a `<p>` a través de <span class="options-api">`this.$refs.p`</span><span class="composition-api">`p.value`</span>, y realiza algunas operaciones directas en el DOM (por ejemplo, cambiar su `textContent`).
