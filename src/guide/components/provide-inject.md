@@ -12,7 +12,7 @@ Normalmente, cuando necesitamos pasar datos del componente padre a un componente
 
 Fíjate en que, aunque al componente `<Footer>` no le importen en absoluto estas props, tiene que declararlas y pasarlas para que `<DeepChild>` pueda acceder a ellas. Si hay una cadena de padres más larga, más componentes se verán afectados en el camino. Esto se llama "profundización de props" y definitivamente no es divertido de tratar.
 
-Podemos resolver la profundización de props con `provide` y `inject`. Un componente padre puede servir como **proveedor de dependencia** para todos sus descendientes. Cualquier componente en el árbol descendiente, independientemente de su profundidad, puede **inyectar** dependencias proporcionadas por los componentes de su cadena padre.
+Podemos resolver la profundización de props con `provide` e `inject`. Un componente padre puede servir como **proveedor de dependencia** para todos sus descendientes. Cualquier componente en el árbol descendiente, independientemente de su profundidad, puede **inyectar** dependencias proporcionadas por los componentes de su cadena padre.
 
 ![esquema de Provide/inject](./images/provide-inject.png)
 
