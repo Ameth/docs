@@ -1,6 +1,6 @@
 # Props
 
-A child component can accept input from the parent via **props**. First, it needs to declare the props it accepts:
+Un componente hijo puede aceptar entradas del padre a través de **props**. Lo primero que tiene que hacer es declarar las props que acepta:
 
 <div class="composition-api">
 <div class="sfc">
@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 ```
 
-Note `defineProps()` is a compile-time macro and doesn't need to be imported. Once declared, the `msg` prop can be used in the child component's template. It can also be accessed in JavaScript via the returned object of `defineProps()`.
+Ten en cuenta que `defineProps()` es una macro en tiempo de compilación y no necesita ser importada. Una vez declarada, la prop `msg` puede ser utilizada en la plantilla del componente hijo. También es posible acceder a ella en JavaScript a través del objeto devuelto por `defineProps()`.
 
 </div>
 
@@ -32,7 +32,7 @@ export default {
 }
 ```
 
-Once declared, the `msg` prop is exposed on `this` and can be used in the child component's template. The received props are passed to `setup()` as the first argument.
+Una vez declarada, la prop `msg` queda expuesta en `this` y puede ser utilizada en la plantilla del componente hijo. Las props recibidas se pasan a `setup()` como primer argumento.
 
 </div>
 
@@ -49,11 +49,11 @@ export default {
 }
 ```
 
-Once declared, the `msg` prop is exposed on `this` and can be used in the child component's template.
+Una vez declarada, la prop `msg` queda expuesta en `this` y puede ser utilizada en la plantilla del componente hijo.
 
 </div>
 
-The parent can pass the prop to the child just like attributes. To pass a dynamic value, we can also use the `v-bind` syntax:
+El padre puede pasar la prop al hijo exactamente igual que los atributos. Para pasar un valor dinámico, también se puede utilizar la sintaxis `v-bind`:
 
 <div class="sfc">
 
@@ -70,4 +70,4 @@ The parent can pass the prop to the child just like attributes. To pass a dynami
 
 </div>
 
-Now try it yourself in the editor.
+Ahora pruébalo tú mismo en el editor.
