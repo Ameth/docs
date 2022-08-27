@@ -2,7 +2,7 @@
 
 ## ¿Qué es el Manejo del Estado?
 
-Technically, every Vue component instance already "manages" its own reactive state. Take a simple counter component as an example:
+Técnicamente, cada instancia de un componente de Vue ya "gestiona" su propio estado reactivo. Tomemos como ejemplo un simple componente contador:
 
 <div class="composition-api">
 
@@ -50,38 +50,38 @@ export default {
 
 </div>
 
-It is a self-contained unit with the following parts:
+Esta es una unidad autónoma con las siguientes partes:
 
-- The **state**, the source of truth that drives our app;
-- The **view**, a declarative mapping of the **state**;
-- The **actions**, the possible ways the state could change in reaction to user inputs from the **view**.
+- El **estado (state)**, la fuente de verdad que dirige nuestra aplicación.
+- La **vista (view)**, un mapeo declarativo del **estado**.
+- Las **acciones (actions)**, las posibles formas en que el estado podría cambiar en reacción a las entradas del usuario desde la **vista**.
 
-This is a simple representation of the concept of "one-way data flow":
+Esta es una representación sencilla del concepto de "flujo de datos en una sola dirección":
 
 <p style="text-align: center">
   <img alt="state flow diagram" src="./images/state-flow.png" width="252px" style="margin: 40px auto">
 </p>
 
-However, the simplicity starts to break down when we have **multiple components that share a common state**:
+Sin embargo, la simplicidad comienza a fallar cuando tenemos **múltiples componentes que comparten un estado común**:
 
-1. Multiple views may depend on the same piece of state.
-2. Actions from different views may need to mutate the same piece of state.
+1. Múltiples vistas pueden depender del mismo estado.
+2. Es posible que las acciones de diferentes vistas necesiten mutar el mismo estado.
 
-For case one, a possible workaround is by "lifting" the shared state up to a common ancestor component, and then pass it down as props. However, this quickly gets tedious in component trees with deep hierarchies, leading to another problem known as [Prop Drilling](/guide/components/provide-inject.html#prop-drilling).
+En el primer caso, una posible solución es "elevar" el estado compartido a un componente ancestro común, y luego pasarlo hacia abajo como props. Sin embargo, esto se vuelve rápidamente tedioso en árboles de componentes con jerarquías profundas, lo que lleva a otro problema conocido como [Profundización de Prop](/guide/components/provide-inject.html#profundizacion-de-prop).
 
-For case two, we often find ourselves resorting to solutions such as reaching for direct parent / child instances via template refs, or trying to mutate and synchronize multiple copies of the state via emitted events. Both of these patterns are brittle and quickly lead to unmaintainable code.
+Para el segundo caso, a menudo nos encontramos recurriendo a soluciones como alcanzar instancias directas de padre/hijo a través de refs de plantilla, o intentar mutar y sincronizar varias copias del estado a través de eventos emitidos. Ambos patrones son frágiles y conducen rápidamente a un código que no se puede mantener.
 
-A simpler and more straightforward solution is to extract the shared state out of the components, and manage it in a global singleton. With this, our component tree becomes a big "view", and any component can access the state or trigger actions, no matter where they are in the tree!
+Una solución más sencilla y directa es extraer el estado compartido de los componentes y administrarlo en una única instancia global. Con esto, nuestro árbol de componentes se convierte en una gran "vista", y cualquier componente puede acceder al estado o desencadenar acciones, ¡sin importar en qué parte del árbol se encuentre!
 
-## Gestión de Estado Sencilla con la API de Reactividad
+## Gestión sencilla del estado con la API de Reactividad
 
 <div class="options-api">
 
-In Options API, reactive data is declared using the `data()` option. Internally, the object returned by `data()` is made reactive via the [`reactive()`](/api/reactivity-core.html#reactive) function, which is also available as a public API.
+En la Options API, los datos reactivos se declaran mediante la opción `data()`. Internamente, el objeto devuelto por `data()` se vuelve reactivo a través de la función [`reactive()`](/api/reactivity-core.html#reactive), que también está disponible como una API pública.
 
 </div>
 
-If you have a piece of state that should be shared by multiple instances, you can use [`reactive()`](/api/reactivity-core.html#reactive) to create a reactive object, and then import it into multiple components:
+Si tienes un estado que debe ser compartido por varias instancias, puedes usar [`reactive()`](/api/reactivity-core.html#reactive) para crear un objeto reactivo y luego importarlo en varios componentes:
 
 ```js
 // store.js
@@ -151,9 +151,9 @@ export default {
 
 </div>
 
-Now whenever the `store` object is mutated, both `<ComponentA>` and `<ComponentB>` will update their views automatically - we have a single source of truth now.
+Ahora, cada vez que se muta el objeto `store`, tanto `<ComponentA>` como `<ComponentB>` actualizarán sus vistas automáticamente; ahora tenemos una única fuente de verdad.
 
-However, this also means any component importing `store` can mutate it however they want:
+Sin embargo, esto también significa que cualquier componente que importe a `store` puede mutarlo como quiera:
 
 ```vue-html{2}
 <template>
@@ -163,7 +163,7 @@ However, this also means any component importing `store` can mutate it however t
 </template>
 ```
 
-While this works in simple cases, global state that can be arbitrarily mutated by any component is not going to be very maintainable in the long run. To ensure the state-mutating logic is centralized like the state itself, it is recommended to define methods on the store with names that express the intention of the actions:
+Si bien esto funciona en casos sencillos, el estado global que puede ser mutado arbitrariamente por cualquier componente no será muy fácil de mantener a largo plazo. Para garantizar que la lógica de mutación del estado esté centralizada como el propio estado, se recomienda definir métodos en el store con nombres que expresen la intención de las acciones:
 
 ```js{6-8}
 // store.js
@@ -197,19 +197,19 @@ export const store = reactive({
 </div>
 
 :::tip
-Note the click handler uses `store.increment()` with the parenthesis - this is necessary to call the method with the proper `this` context since it's not a component method.
+Tenga en cuenta que el manejador de clics usa `store.increment()` con el paréntesis; esto es necesario para llamar al método con el contexto apropiado de `this`, ya que no es un método de componente.
 :::
 
-Although here we are using a single reactive object as a store, you can also share reactive state created using other [Reactivity APIs](/api/reactivity-core.html) such as `ref()` or `computed()`, or even return global state from a [Composable](/guide/reusability/composables.html):
+Aunque aquí estamos usando un único objeto reactivo como store, también puedes compartir el estado reactivo creado con otras [API de reactividad](/api/reactivity-core.html), como `ref()` o `computed()`, o incluso devolver el estado global desde un [Composable](/guide/reusability/composables.html):
 
 ```js
 import { ref } from 'vue'
 
-// global state, created in module scope
+// estado global, creado en el ámbito del módulo
 const globalCount = ref(1)
 
 export function useCount() {
-  // local state, created per-component
+  // estado local, creado por componente
   const localCount = ref(1)
 
   return {
@@ -219,25 +219,25 @@ export function useCount() {
 }
 ```
 
-The fact that Vue's reactivity system is decoupled from the component model makes it extremely flexible.
+El hecho de que el sistema de reactividad de Vue esté desacoplado del modelo de componentes lo hace extremadamente flexible.
 
 ## Consideraciones sobre el SSR
 
-If you are building an application that leverages [Server-Side Rendering (SSR)](./ssr), the above pattern can lead to issues due to the store being a singleton shared across multiple requests. This is discussed in [more details](./ssr#cross-request-state-pollution) in the SSR guide.
+Si estás creando una aplicación que aprovecha el [renderizado del lado del servidor (SSR)](./ssr), el patrón anterior puede generar problemas debido a que el store es una única instancia compartida entre varias solicitudes. Esto se analiza con [más detalle](./ssr.html#contaminacion-del-estado-por-solicitudes-cruzadas) en la guía de SSR.
 
 ## Pinia
 
-While our hand-rolled state management solution will suffice in simple scenarios, there are many more things to consider in large-scale production applications:
+Si bien nuestra solución de administración del estado manual será suficiente en escenarios sencillos, hay muchas más cosas a considerar en aplicaciones de producción a gran escala:
 
-- Stronger conventions for team collaboration
-- Integrating with the Vue DevTools, including timeline, in-component inspection, and time-travel debugging
-- Hot Module Replacement
-- Server-Side Rendering support
+- Convenciones más fuertes para la colaboración en equipo.
+- Integración con las Vue DevTools, incluyendo la línea de tiempo, la inspección en componentes y la depuración de viajes en el tiempo
+- Reemplazo de módulos en caliente
+- Soporte de renderizado del lado del servidor
 
-[Pinia](https://pinia.vuejs.org) is a state management library that implements all of the above. It is maintained by the Vue core team, and works with both Vue 2 and Vue 3.
+[Pinia](https://pinia.vuejs.org) es una biblioteca de gestión de estados que implementa todo lo anterior. Es mantenida por el equipo central de Vue, y funciona tanto con Vue 2 como con Vue 3.
 
-Existing users may be familiar with [Vuex](https://vuex.vuejs.org/), the previous official state management library for Vue. With Pinia serving the same role in the ecosystem, Vuex is now in maintenance mode. It still works, but will no longer receive new features. It is recommended to use Pinia for new applications.
+Los usuarios existentes pueden estar familiarizados con [Vuex](https://vuex.vuejs.org/), la anterior biblioteca oficial de gestión de estados para Vue. Con Pinia desempeñando el mismo papel en el ecosistema, Vuex ahora está en modo de mantenimiento. Todavía funciona, pero ya no recibirá nuevas características. Se recomienda utilizar Pinia para nuevas aplicaciones.
 
-Pinia started out as an exploration of what the next iteration of Vuex could look like, incorporating many ideas from core team discussions for Vuex 5. Eventually, we realized that Pinia already implements most of what we wanted in Vuex 5, and decided to make it the new recommendation instead.
+Pinia comenzó como una exploración de cómo podría ser la próxima iteración de Vuex, incorporando muchas ideas de las discusiones del equipo central para Vuex 5. Finalmente, nos dimos cuenta de que Pinia ya implementa la mayor parte de lo que queríamos en Vuex 5, y decidimos que fuera la nueva recomendación.
 
-Compared to Vuex, Pinia provides a simpler API with less ceremony, offers Composition-API-style APIs, and most importantly, has solid type inference support when used with TypeScript.
+En comparación con Vuex, Pinia proporciona una API más simple con menos ceremonia, ofrece una API al estilo de Composition API y, lo que es más importante, tiene un sólido soporte de inferencia de tipos cuando se utiliza con TypeScript.
