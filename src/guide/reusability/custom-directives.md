@@ -55,7 +55,7 @@ export default {
 </div>
 
 <div class="demo">
-  <input v-focus placeholder="This should be focused" />
+  <input v-focus placeholder="Debería estar enfocado" />
 </div>
 
 Suponiendo que no has hecho clic en otra parte de la página, la entrada de arriba debería estar autoenfocada. Esta directiva es más útil que el atributo `autofocus` porque funciona no sólo al cargar la página; también funciona cuando el elemento es insertado dinámicamente por Vue.
