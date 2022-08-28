@@ -1,6 +1,6 @@
 # Props
 
-Un componente hijo puede aceptar entradas del padre a través de **props**. Lo primero que tiene que hacer es declarar las props que acepta:
+Un componente hijo puede aceptar entradas del padre a través de **props**. En primer lugar, es necesario declarar las props que recibe:
 
 <div class="composition-api">
 <div class="sfc">
@@ -21,18 +21,18 @@ Ten en cuenta que `defineProps()` es una macro en tiempo de compilación y no ne
 <div class="html">
 
 ```js
-// in child component
+// en el componente hijo
 export default {
   props: {
     msg: String
   },
   setup(props) {
-    // access props.msg
+    // accede a props.msg
   }
 }
 ```
 
-Una vez declarada, la prop `msg` queda expuesta en `this` y puede ser utilizada en la plantilla del componente hijo. Las props recibidas se pasan a `setup()` como primer argumento.
+Una vez declarada, la prop `msg` queda expuesta en el `this` y puede ser utilizada en la plantilla del componente hijo. Las props recibidas se pasan a `setup()` como primer argumento.
 
 </div>
 
@@ -41,7 +41,7 @@ Una vez declarada, la prop `msg` queda expuesta en `this` y puede ser utilizada 
 <div class="options-api">
 
 ```js
-// in child component
+// en el componente hijo
 export default {
   props: {
     msg: String
@@ -49,11 +49,11 @@ export default {
 }
 ```
 
-Una vez declarada, la prop `msg` queda expuesta en `this` y puede ser utilizada en la plantilla del componente hijo.
+Una vez declarada, la prop `msg` queda expuesta en el `this` y puede ser utilizada en la plantilla del componente hijo.
 
 </div>
 
-El padre puede pasar la prop al hijo exactamente igual que los atributos. Para pasar un valor dinámico, también se puede utilizar la sintaxis `v-bind`:
+El padre puede pasar la prop al hijo de la misma forma que los atributos. Para pasar un valor dinámico, también se puede utilizar la sintaxis `v-bind`:
 
 <div class="sfc">
 

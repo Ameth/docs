@@ -1,6 +1,6 @@
 # Propiedad Computada
 
-Sigamos desarrollando la lista de tareas del último paso. Para ello, ya hemos añadido una funcionalidad de conmutación a cada una de las tareas. Ello se consigue añadiendo una propiedad `done` a cada objeto `todo`, y utilizando `v-model` para enlazarlo con una casilla.
+Sigamos desarrollando la lista de tareas del último paso. Para ello, ya hemos añadido una funcionalidad de conmutación a cada una de las tareas. Ello se consigue añadiendo una propiedad `done` a cada objeto todo, y utilizando `v-model` para vincularlo con una casilla de verificación:
 
 ```vue-html{2}
 <li v-for="todo in todos">
@@ -9,11 +9,11 @@ Sigamos desarrollando la lista de tareas del último paso. Para ello, ya hemos a
 </li>
 ```
 
-La siguiente mejora que podemos añadir es poder ocultar las tareas ya completadas. Ya tenemos un botón que conmuta el estado `hideCompleted`. Pero ¿cómo renderizamos diferentes elementos de la lista en función de ese estado?
+La siguiente mejora que podemos añadir es ser capaz de ocultar las tareas completadas. Ya tenemos un botón que conmuta el estado `hideCompleted`. Pero, ¿cómo renderizamos diferentes elementos de la lista en función de ese estado?
 
 <div class="options-api">
 
-Presentamos a la <a target="_blank" href="/guide/essentials/computed.html">propiedad computada</a>. Podemos declarar una propiedad que se computa reactivamente a partir de otras propiedades utilizando la opción `computed`:
+Te presentamos a la <a target="_blank" href="/guide/essentials/computed.html">propiedad computada</a>. Podemos declarar una propiedad que se computa reactivamente a partir de otras propiedades utilizando la opción `computed`:
 
 <div class="sfc">
 
@@ -47,7 +47,7 @@ createApp({
 </div>
 <div class="composition-api">
 
-Presentamos a <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. Nos permite crear una ref computada que calcule su `.value` en base a otras fuentes de datos reactivas:
+Te presentamos a <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. Podemos crear una ref computada que calcule su `.value` en base a otras fuentes de datos reactivas:
 
 <div class="sfc">
 
@@ -60,8 +60,8 @@ const todos = ref([
 ])
 
 const filteredTodos = computed(() => {
-  // return filtered todos based on
-  // `todos.value` & `hideCompleted.value`
+  // retorna las tareas filtradas basándose en
+  // `todos.value` y `hideCompleted.value`
 })
 ```
 
@@ -79,8 +79,8 @@ createApp({
     ])
 
     const filteredTodos = computed(() => {
-      // se devuelven las tareas filtradas basándose en
-      // `todos.value` & `hideCompleted.value`
+      // retorna las tareas filtradas basándose en
+      // `todos.value` y `hideCompleted.value`
     })
 
     return {
@@ -99,6 +99,6 @@ createApp({
 + <li v-for="todo in filteredTodos">
 ```
 
-Una propiedad computada rastrea otros estados reactivos utilizados en su cómputo como dependencias. Almacena en caché el resultado y lo actualiza automáticamente cuando sus dependencias cambian.
+Una propiedad computada rastrea otros estados reactivos utilizados en su cómputo como dependencias. Almacena el resultado en caché y lo actualiza automáticamente cuando sus dependencias cambian.
 
-Ahora, intenta añadir la propiedad computada `filteredTodos` e implementa su lógica de cómputo. Una vez implementada correctamente, la marcación de una tarea mientras se oculten los elementos completados debería ocultarla también instantáneamente.
+Ahora, ¡intenta añadir la propiedad computada `filteredTodos` e implementa su lógica de cálculo! En caso de que se implemente correctamente, si se verifica una tarea, se ocultará instantáneamente cuando se oculten los ítems completados.

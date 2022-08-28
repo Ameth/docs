@@ -10,7 +10,7 @@ Además de recibir props, un componente hijo puede también emitir eventos hacia
 // declara los eventos a emitir
 const emit = defineEmits(['response'])
 
-// emite con argumento
+// emit con argumento
 emit('response', 'hola desde el hijo')
 </script>
 ```
@@ -24,7 +24,7 @@ export default {
   // declara los eventos a emitir
   emits: ['response'],
   setup(props, { emit }) {
-   // emite con argumento
+    // emit con argumento
     emit('response', 'hola desde el hijo')
   }
 }
@@ -41,7 +41,7 @@ export default {
   // declara los eventos a emitir
   emits: ['response'],
   created() {
-    // emite con argumento
+    // emit con argumento
     this.$emit('response', 'hola desde el hijo')
   }
 }
@@ -49,9 +49,9 @@ export default {
 
 </div>
 
-El primer argumento de <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> es el nombre del evento. Cualquier argumento adicional se pasa al receptor del evento.
+El primer argumento para <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> es el nombre del evento. Cualquier argumento adicional se pasa al escuchador del evento.
 
-El padre puede escuchar los eventos emitidos por el hijo usando `v-on` - en el siguiente caso el manejador recibe el argumento extra de la llamada de emisión del hijo y lo asigna al estado local:
+El padre puede escuchar los eventos emitidos por el hijo usando `v-on`; en el siguiente caso el manejador recibe el argumento extra de la llamada de emisión del hijo y lo asigna al estado local:
 
 <div class="sfc">
 

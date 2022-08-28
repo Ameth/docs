@@ -27,14 +27,14 @@ export default {
 }
 ```
 
-También necesitamos registrar el componente usando la opción `components`. En este caso estamos utilizando la abreviatura de propiedad de objeto para registrar el componente `ChildComp` bajo la clave `ChildComp`.
+También necesitamos registrar el componente usando la opción `components`. En este caso estamos utilizando la abreviatura de la propiedad del objeto para registrar el componente `ChildComp` bajo la key `ChildComp`.
 
 </div>
 </div>
 
 <div class="sfc">
 
-Después, podemos utilizar el componente en la plantilla como:
+Entonces, podemos utilizar el componente en la plantilla como:
 
 ```vue-html
 <ChildComp />
@@ -54,9 +54,9 @@ createApp({
 })
 ```
 
-También necesitamos registrar el componente usando la opción `components`. En este caso utilizamos la abreviatura de propiedad de objeto para registrar el componente `ChildComp` bajo la clave `ChildComp`.
+También necesitamos registrar el componente usando la opción `components`. En este caso utilizamos la abreviatura de la propiedad del objeto para registrar el componente `ChildComp` bajo la key `ChildComp`.
 
-Ya que estamos escribiendo la plantilla en el DOM, estará sujeta a las reglas de interpretación del navegador, que no distingue entre mayúsculas y minúsculas en los nombres de las etiquetas. Por lo tanto, necesitamos usar el nombre en kebab-case para referirnos al componente hijo:
+Ya que estamos escribiendo la plantilla en el DOM, esta estará sujeta a las reglas de procesamiento del navegador, que no distingue entre mayúsculas y minúsculas en los nombres de las etiquetas. Por lo tanto, necesitamos usar el nombre en kebab-case para referirnos al componente hijo:
 
 ```vue-html
 <child-comp></child-comp>
