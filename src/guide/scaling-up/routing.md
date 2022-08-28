@@ -4,7 +4,7 @@
 
 El enrutamiento en el lado del servidor significa que el servidor envía una respuesta basada en la ruta de la URL que está visitando el usuario. Cuando hacemos clic en un enlace de una aplicación web tradicional renderizada por un servidor, el navegador recibe una respuesta HTML del servidor y vuelve a cargar toda la página con el nuevo HTML.
 
-Sin embargo, en una [Aplicación de una sola página](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA), el JavaScript del lado del cliente puede interceptar la navegación, obtener dinámicamente nuevos datos y actualizar la página actual sin necesidad de recargarla por completo. Esto generalmente da como resultado una experiencia de usuario más ágil, especialmente para casos de uso que se parecen más a "aplicaciones" reales, donde se espera que el usuario realice muchas interacciones durante un largo período de tiempo.
+Sin embargo, en una [Aplicación de una Sola página](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA), el JavaScript del lado del cliente puede interceptar la navegación, obtener dinámicamente nuevos datos y actualizar la página actual sin necesidad de recargarla por completo. Esto generalmente da como resultado una experiencia de usuario más ágil, especialmente para casos de uso que se parecen más a "aplicaciones" reales, donde se espera que el usuario realice muchas interacciones durante un largo período de tiempo.
 
 En estas SPA, el "enrutamiento" se realiza en el lado del cliente, en el navegador. Un enrutador del lado del cliente se encarga de administrar la vista renderizada de la aplicación utilizando las API del navegador, como la [API del historial](https://developer.mozilla.org/en-US/docs/Web/API/History) o el [evento `hashchange`](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
 
@@ -13,17 +13,17 @@ En estas SPA, el "enrutamiento" se realiza en el lado del cliente, en el navegad
 <!-- TODO update links -->
 <div>
   <VueSchoolLink href="https://vueschool.io/courses/vue-router-4-for-everyone" title="Curso gratis de Vue Router">
-    Vea un curso de vídeo gratuito en Vue School
+    Ver un curso de video gratuito en Vue School
   </VueSchoolLink>
 </div>
 
-Vue es muy adecuado para construir SPA. Para la mayoría de las SPA, se recomienda utilizar la biblioteca oficial de [Vue Router](https://github.com/vuejs/router). Para más detalles, consulte la [documentación](https://router.vuejs.org/) de Vue Router.
+Vue es muy adecuado para construir SPA. Para la mayoría de las SPA, se recomienda utilizar la [librería Vue Router](https://github.com/vuejs/router), que cuenta con soporte oficial. Para más detalles, consulta la [documentación](https://router.vuejs.org/) de Vue Router.
 
 ## Enrutamiento simple desde cero
 
-Si solo necesita un enrutamiento muy simple y no desea involucrar una biblioteca de enrutamiento completa, puede hacerlo con [Componentes dinámicos](/guide/essentials/component-basics.html#componentes-dinamicos) y actualizar el estado actual del componente escuchando los [eventos de `hashchange`](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) del navegador o usando la [API de historial](https://developer.mozilla.org/en-US/docs/Web/API/History).
+Si solo necesitas un enrutamiento muy simple y no deseas involucrar una librería de enrutamiento completa, puedes hacerlo con [Componentes Dinámicos](/guide/essentials/component-basics.html#componentes-dinamicos) y actualizar el estado del componente escuchando los [eventos de `hashchange`](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) del navegador o usando la [API de historial](https://developer.mozilla.org/en-US/docs/Web/API/History).
 
-Aquí hay un ejemplo básico:
+Este es un ejemplo de lo que se puede hacer:
 
 <div class="composition-api">
 
@@ -51,8 +51,8 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <a href="#/">Home</a> | <a href="#/about">About</a> |
-  <a href="#/non-existent-path">Broken Link</a>
+  <a href="#/">Home</a> | <a href="#/about">Acerca de</a> |
+  <a href="#/non-existent-path">Enlace Roto</a>
   <component :is="currentView" />
 </template>
 ```
@@ -94,8 +94,8 @@ export default {
 </script>
 
 <template>
-  <a href="#/">Home</a> | <a href="#/about">About</a> |
-  <a href="#/non-existent-path">Broken Link</a>
+  <a href="#/">Home</a> | <a href="#/about">Acerca de</a> |
+  <a href="#/non-existent-path">Enlace Roto</a>
   <component :is="currentView" />
 </template>
 ```

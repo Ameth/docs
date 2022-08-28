@@ -10,16 +10,16 @@ Técnicamente, cada instancia de un componente de Vue ya "gestiona" su propio es
 <script setup>
 import { ref } from 'vue'
 
-// state
+// estado
 const count = ref(0)
 
-// actions
+// acciones
 function increment() {
   count.value++
 }
 </script>
 
-<!-- view -->
+<!-- vista -->
 <template>{{ count }}</template>
 ```
 
@@ -29,13 +29,13 @@ function increment() {
 ```vue
 <script>
 export default {
-  // state
+  // estado
   data() {
     return {
       count: 0
     }
   },
-  // actions
+  // acciones
   methods: {
     increment() {
       this.count++
@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<!-- view -->
+<!-- vista -->
 <template>{{ count }}</template>
 ```
 
@@ -52,9 +52,9 @@ export default {
 
 Esta es una unidad autónoma con las siguientes partes:
 
-- El **estado (state)**, la fuente de verdad que dirige nuestra aplicación.
-- La **vista (view)**, un mapeo declarativo del **estado**.
-- Las **acciones (actions)**, las posibles formas en que el estado podría cambiar en reacción a las entradas del usuario desde la **vista**.
+- El **estado**, la fuente de verdad que dirige nuestra aplicación.
+- La **vista**, un mapeo declarativo del **estado**.
+- Las **acciones**, las posibles formas en que el estado podría cambiar en reacción a las entradas del usuario desde la **vista**.
 
 Esta es una representación sencilla del concepto de "flujo de datos en una sola dirección":
 
@@ -69,11 +69,11 @@ Sin embargo, la simplicidad comienza a fallar cuando tenemos **múltiples compon
 
 En el primer caso, una posible solución es "elevar" el estado compartido a un componente ancestro común, y luego pasarlo hacia abajo como props. Sin embargo, esto se vuelve rápidamente tedioso en árboles de componentes con jerarquías profundas, lo que lleva a otro problema conocido como [Profundización de Prop](/guide/components/provide-inject.html#profundizacion-de-prop).
 
-Para el segundo caso, a menudo nos encontramos recurriendo a soluciones como alcanzar instancias directas de padre/hijo a través de refs de plantilla, o intentar mutar y sincronizar varias copias del estado a través de eventos emitidos. Ambos patrones son frágiles y conducen rápidamente a un código que no se puede mantener.
+Para el segundo caso, a menudo nos encontramos recurriendo a soluciones como alcanzar instancias directas de padre / hijo a través de refs de plantilla, o intentar mutar y sincronizar varias copias del estado a través de eventos emitidos. Ambos patrones son frágiles y conducen rápidamente a un código que no se puede mantener.
 
 Una solución más sencilla y directa es extraer el estado compartido de los componentes y administrarlo en una única instancia global. Con esto, nuestro árbol de componentes se convierte en una gran "vista", y cualquier componente puede acceder al estado o desencadenar acciones, ¡sin importar en qué parte del árbol se encuentre!
 
-## Gestión sencilla del estado con la API de Reactividad
+## Gestión Sencilla del Estado con la API de Reactividad
 
 <div class="options-api">
 
@@ -100,7 +100,7 @@ export const store = reactive({
 import { store } from './store.js'
 </script>
 
-<template>From A: {{ store.count }}</template>
+<template>Desde A: {{ store.count }}</template>
 ```
 
 ```vue
@@ -109,7 +109,7 @@ import { store } from './store.js'
 import { store } from './store.js'
 </script>
 
-<template>From B: {{ store.count }}</template>
+<template>Desde B: {{ store.count }}</template>
 ```
 
 </div>
@@ -129,7 +129,7 @@ export default {
 }
 </script>
 
-<template>From A: {{ store.count }}</template>
+<template>Desde A: {{ store.count }}</template>
 ```
 
 ```vue
@@ -146,7 +146,7 @@ export default {
 }
 </script>
 
-<template>From B: {{ store.count }}</template>
+<template>Desde B: {{ store.count }}</template>
 ```
 
 </div>
@@ -158,7 +158,7 @@ Sin embargo, esto también significa que cualquier componente que importe a `sto
 ```vue-html{2}
 <template>
   <button @click="store.count++">
-    From B: {{ store.count }}
+    Desde B: {{ store.count }}
   </button>
 </template>
 ```
@@ -180,7 +180,7 @@ export const store = reactive({
 ```vue-html{2}
 <template>
   <button @click="store.increment()">
-    From B: {{ store.count }}
+    Desde B: {{ store.count }}
   </button>
 </template>
 ```
@@ -197,10 +197,10 @@ export const store = reactive({
 </div>
 
 :::tip
-Tenga en cuenta que el manejador de clics usa `store.increment()` con el paréntesis; esto es necesario para llamar al método con el contexto apropiado de `this`, ya que no es un método de componente.
+Ten en cuenta que el manejador de clics usa `store.increment()` con el paréntesis; esto es necesario para llamar al método en el contexto apropiado de `this`, ya que no es un método del componente.
 :::
 
-Aunque aquí estamos usando un único objeto reactivo como store, también puedes compartir el estado reactivo creado con otras [API de reactividad](/api/reactivity-core.html), como `ref()` o `computed()`, o incluso devolver el estado global desde un [Composable](/guide/reusability/composables.html):
+Aunque aquí estamos usando un único objeto reactivo como una store, también puedes compartir el estado reactivo creado con otras [APIs de reactividad](/api/reactivity-core.html), como `ref()` o `computed()`, o incluso devolver el estado global desde un [Composable](/guide/reusability/composables.html):
 
 ```js
 import { ref } from 'vue'
@@ -209,7 +209,7 @@ import { ref } from 'vue'
 const globalCount = ref(1)
 
 export function useCount() {
-  // estado local, creado por componente
+  // estado local, creado por el componente
   const localCount = ref(1)
 
   return {
@@ -219,25 +219,25 @@ export function useCount() {
 }
 ```
 
-El hecho de que el sistema de reactividad de Vue esté desacoplado del modelo de componentes lo hace extremadamente flexible.
+El hecho de que el sistema de reactividad de Vue esté desacoplado del modelo del componente lo hace extremadamente flexible.
 
 ## Consideraciones sobre el SSR
 
-Si estás creando una aplicación que aprovecha el [renderizado del lado del servidor (SSR)](./ssr), el patrón anterior puede generar problemas debido a que el store es una única instancia compartida entre varias solicitudes. Esto se analiza con [más detalle](./ssr.html#contaminacion-del-estado-por-solicitudes-cruzadas) en la guía de SSR.
+Si estás creando una aplicación que aprovecha el [Renderizado del Lado del Servidor (SSR)](./ssr), el patrón anterior puede generar problemas debido a que el store es una única instancia compartida entre varias solicitudes. Esto se analiza con [más detalle](./ssr.html#contaminacion-del-estado-por-solicitudes-cruzadas) en la guía de SSR.
 
 ## Pinia
 
 Si bien nuestra solución de administración del estado manual será suficiente en escenarios sencillos, hay muchas más cosas a considerar en aplicaciones de producción a gran escala:
 
 - Convenciones más fuertes para la colaboración en equipo.
-- Integración con las Vue DevTools, incluyendo la línea de tiempo, la inspección en componentes y la depuración de viajes en el tiempo
+- Integración con las DevTools de Vue, incluyendo la línea de tiempo, la inspección dentro del componente y la depuración de la trayectoria temporal
 - Reemplazo de módulos en caliente
-- Soporte de renderizado del lado del servidor
+- Soporte de Renderizado del Lado del Servidor
 
-[Pinia](https://pinia.vuejs.org) es una biblioteca de gestión de estados que implementa todo lo anterior. Es mantenida por el equipo central de Vue, y funciona tanto con Vue 2 como con Vue 3.
+[Pinia](https://pinia.vuejs.org) es una librería de gestión de estados que implementa todo lo anterior. Es mantenida por el equipo central de Vue, y funciona tanto con Vue 2 como con Vue 3.
 
-Los usuarios existentes pueden estar familiarizados con [Vuex](https://vuex.vuejs.org/), la anterior biblioteca oficial de gestión de estados para Vue. Con Pinia desempeñando el mismo papel en el ecosistema, Vuex ahora está en modo de mantenimiento. Todavía funciona, pero ya no recibirá nuevas características. Se recomienda utilizar Pinia para nuevas aplicaciones.
+Los usuarios antiguos pueden estar familiarizados con [Vuex](https://vuex.vuejs.org/), la anterior librería oficial de gestión de estados para Vue. Con Pinia desempeñando el mismo papel en el ecosistema, Vuex está ahora en modo de mantenimiento. Todavía funciona, pero ya no recibirá nuevas características. Se recomienda utilizar Pinia para las nuevas aplicaciones.
 
-Pinia comenzó como una exploración de cómo podría ser la próxima iteración de Vuex, incorporando muchas ideas de las discusiones del equipo central para Vuex 5. Finalmente, nos dimos cuenta de que Pinia ya implementa la mayor parte de lo que queríamos en Vuex 5, y decidimos que fuera la nueva recomendación.
+Pinia comenzó como una exploración de cómo podría lucir la siguiente iteración de Vuex, incorporando muchas ideas de las discusiones del equipo central para Vuex 5. Finalmente, nos dimos cuenta de que Pinia ya implementa la mayor parte de lo que queríamos en Vuex 5, y decidimos que fuera la nueva recomendación.
 
-En comparación con Vuex, Pinia proporciona una API más simple con menos ceremonia, ofrece una API al estilo de Composition API y, lo que es más importante, tiene un sólido soporte de inferencia de tipos cuando se utiliza con TypeScript.
+En comparación con Vuex, Pinia proporciona una API más sencilla con menos formalidades, ofrece APIs al estilo de la Composition API y, lo que es más importante, tiene un sólido soporte de inferencia de tipos cuando se utiliza con TypeScript.

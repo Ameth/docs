@@ -4,39 +4,39 @@ import TestingApiSwitcher from './TestingApiSwitcher.vue'
 
 # Testing
 
-## ¿Por qué hacer pruebas?
+## ¿Por Qué Hacer Pruebas?
 
-Las pruebas automatizadas te ayudan a ti y a tu equipo a crear aplicaciones de Vue complejas de forma rápida y segura, ya que evitan las regresiones y te animan a dividir tu aplicación en funciones, módulos, clases y componentes. Al igual que con cualquier aplicación, tu nueva aplicación de Vue puede fallar de muchas maneras, y es importante que puedas detectar estos problemas y solucionarlos antes de su lanzamiento.
+Las pruebas automatizadas te ayudan a ti y a tu equipo a crear aplicaciones de Vue complejas de forma rápida y segura, ya que evitan las regresiones y te animan a dividir tu aplicación en funciones, módulos, clases y componentes comprobables. Al igual que con cualquier aplicación, tu nueva aplicación de Vue puede fallar de muchas maneras, y es importante que puedas detectar estos problemas y solucionarlos antes de su lanzamiento.
 
-En esta guía, cubriremos la terminología básica y brindaremos nuestras recomendaciones sobre qué herramientas elegir para su aplicación de Vue 3.
+En esta guía, cubriremos la terminología básica y brindaremos nuestras recomendaciones sobre qué herramientas elegir para tu aplicación de Vue 3.
 
-Hay una sección específica de Vue que cubre los composables. Consulte [Pruebas de Composables](#pruebas-de-composables) a continuación para obtener más detalles.
+Hay una sección específica de Vue que cubre los composables. Consulta [Pruebas de Composables](#pruebas-de-composables) más adelante para más detalles.
 
 ## Cuándo Probar
 
 ¡Empieza a hacer pruebas pronto! Te recomendamos que comiences a escribir pruebas tan pronto como puedas. Cuanto más esperes para añadir pruebas a tu aplicación, más dependencias tendrá tu aplicación y más difícil será empezar.
 
-## Tipos de pruebas
+## Tipos de Pruebas
 
-Cuando diseñe la estrategia de pruebas de su aplicación Vue, debe aprovechar los siguientes tipos de pruebas:
+Cuando diseñes la estrategia de pruebas de tu aplicación Vue, debes aprovechar los siguientes tipos de pruebas:
 
-- **Unitarias (Unit)**: Verifica que las entradas a una determinada función, clase o composable están produciendo la salida o los efectos secundarios esperados.
-- **De componente (component)**: Comprueba que tu componente se monta, se renderiza, se puede interactuar con él y se comporta como se espera. Estas pruebas importan más código que las pruebas unitarias, son más complejas y requieren más tiempo de ejecución.
-- **De extremo a extremo (End-to-end)**: Comprueba las funciones que abarcan varias páginas y realiza solicitudes de red reales en su aplicación Vue creada en producción. Estas pruebas a menudo implican la puesta en marcha de una base de datos u otro backend.
+- **Unitaria**: Comprueba que las entradas a una determinada función, clase o composable están produciendo la salida o los efectos secundarios esperados.
+- **De componente**: Comprueba que tu componente se monta, se renderiza, se puede interactuar con él y se comporta como se espera. Estas pruebas importan más código que las pruebas unitarias, son más complejas y requieren más tiempo de ejecución.
+- **De extremo a extremo**: Comprueban las características que abarcan varias páginas y hacen peticiones reales de red contra tu aplicación Vue construida en producción. Estas pruebas a menudo implican la puesta en marcha de una base de datos u otro backend.
 
-Cada tipo de prueba desempeña un papel en la estrategia de pruebas de su aplicación y cada una le protegerá contra diferentes tipos de problemas.
+Cada tipo de prueba desempeña un papel en la estrategia de pruebas de tu aplicación y cada una te protegerá contra diferentes tipos de problemas.
 
 ## Generalidades
 
-Analizaremos brevemente qué son cada una de estas, cómo se pueden implementar para las aplicaciones de Vue y brindaremos algunas recomendaciones generales.
+Discutiremos brevemente qué es cada uno de ellas, cómo pueden implementarse para las aplicaciones Vue, y proporcionaremos algunas recomendaciones generales.
 
-## Pruebas unitarias
+## Pruebas Unitarias
 
-Las pruebas unitarias se escriben para verificar que pequeñas unidades de código aisladas funcionan como se espera. Una prueba unitaria suele abarcar una sola función, clase, composable o módulo. Las pruebas unitarias se centran en la corrección lógica y solo se ocupan de una pequeña parte de la funcionalidad general de la aplicación. Pueden simular grandes partes del entorno de la aplicación (por ejemplo, el estado inicial, clases complejas, módulos de terceros y peticiones de red).
+Las pruebas unitarias se escriben para verificar que pequeñas unidades de código aisladas funcionan como se espera. Una prueba unitaria suele abarcar una única función, clase, composable o módulo. Las pruebas unitarias se centran en la corrección lógica y sólo se ocupan de una pequeña parte de la funcionalidad global de la aplicación. Pueden simular grandes partes del entorno de la aplicación (por ejemplo, el estado inicial, clases complejas, módulos de terceros y peticiones de red).
 
 En general, las pruebas unitarias detectarán problemas de la lógica de negocio y la corrección lógica de una función.
 
-Tomemos por ejemplo esta función `increment`:
+Tomemos como ejemplo esta función `increment`:
 
 ```js
 // helpers.js
@@ -61,71 +61,71 @@ describe('incrementar', () => {
     expect(increment(0, 10)).toBe(1)
   })
 
-  test('no incrementa el número actual por encima del máximo', () => {
+  test('no incrementar el número actual por encima del máximo', () => {
     expect(increment(10, 10)).toBe(10)
   })
 
-  test('tiene un máximo de 10 por defecto', () => {
+  test('tiene un máximo default de 10', () => {
     expect(increment(10)).toBe(10)
   })
 })
 ```
 
-Como se mencionó anteriormente, las pruebas unitarias generalmente se aplican a la lógica de negocio, los componentes, las clases, los módulos o las funciones independientes que no implican la representación de la interfaz de usuario, las solicitudes de red u otras cuestiones de entorno.
+Como se mencionó anteriormente, las pruebas unitarias generalmente se aplican a la lógica de negocio, los componentes, las clases, los módulos o las funciones independientes que no implican la renderización de la interfaz de usuario, las peticiones de red u otras cuestiones de entorno.
 
 Por lo general, estos son módulos simples de JavaScript/TypeScript que no están relacionados con Vue. En general, escribir pruebas unitarias para la lógica de negocio en las aplicaciones Vue no difiere significativamente de las aplicaciones que utilizan otros frameworks.
 
-Hay dos casos en los que SÍ hay que hacer pruebas unitarias de las características específicas de Vue:
+Hay dos instancias en los que SÍ hay que hacer pruebas unitarias de características específicas para Vue:
 
 1. Composables
 2. Componentes
 
 ### Composables
 
-Una categoría de funciones específicas de las aplicaciones de Vue son los [Composables](/guide/reusability/composables.html), que pueden requerir un manejo especial durante las pruebas. Consulte la sección [Pruebas de Composables](#pruebas-de-composables) más abajo para obtener más detalles.
+Una categoría de funciones específicas de las aplicaciones de Vue son los [Composables](/guide/reusability/composables.html), que pueden requerir un manejo especial durante las pruebas. Consulta la sección [Pruebas de Composables](#pruebas-de-composables) más adelante para más detalles.
 
-### Pruebas unitarias en Componentes
+### Pruebas Unitarias en Componentes
 
 Un componente puede ser probado de dos maneras:
 
 1. Caja blanca (Whitebox): Pruebas unitarias
 
-   Las pruebas que son "pruebas de caja blanca" conocen los detalles de implementación y las dependencias de un componente. Se centran en **aislar** el componente bajo prueba. Estas pruebas generalmente implican simular algunos, si no todos, los elementos hijos del componente, así como también configurar el estado y las dependencias de los plugins (por ejemplo, Vuex).
+   Las pruebas que son "pruebas de caja blanca" están al tanto de los detalles de implementación y las dependencias de un componente. Se centran en **aislar** el componente bajo prueba. Estas pruebas generalmente implican simular algunos, si no todos, los elementos hijos del componente, así como también configurar el estado y las dependencias de los plugins (por ejemplo, Vuex).
 
 2. Caja negra (Blackbox): Pruebas de componentes
 
-   Las pruebas que son "pruebas de caja negra" desconocen los detalles de implementación de un componente. Estas pruebas simulan lo menos posible para probar la integración de su componente y su sistema entero. Suelen renderizar todos los componentes hijos y se consideran más bien una "prueba de integración". Vea las [recomendaciones para las pruebas de componentes](#prueba-de-componentes) más abajo.
+   Las pruebas que son "pruebas de caja negra" ignoran los detalles de implementación de un componente. Estas pruebas simulan lo menos posible para probar la integración de su componente y todo el sistema. Suelen renderizar todos los componentes hijos y se consideran más bien una "prueba de integración ". Vea las [Recomendaciones para las Pruebas de Componentes](#pruebas-de-componentes) más adelante.
 
 ### Recomendación
 
 - [Vitest](https://vitest.dev/)
 
-  Dado que la configuración oficial creada por `create-vue` se basa en [Vite](https://vitejs.dev/), recomendamos usar un framework de pruebas unitarias que pueda aprovechar la misma configuración y transformar la fuente de información directamente desde Vite. [Vitest](https://vitest.dev/) es un framework de pruebas unitarias diseñado específicamente para este propósito, creado y mantenido por los miembros del equipo de Vue/Vite. Se integra con proyectos basados en Vite con un esfuerzo mínimo y es increíblemente rápido.
+  Dado que la configuración oficial creada por `create-vue` se basa en [Vite](https://vitejs.dev/), recomendamos usar un framework de pruebas unitarias que pueda aprovechar la misma configuración y transformar la fuente de información directamente desde Vite. [Vitest](https://vitest.dev/) es un framework de pruebas unitarias diseñado específicamente para este propósito, creado y mantenido por los miembros del equipo de Vue / Vite. Se integra con proyectos basados en Vite con un esfuerzo mínimo y es increíblemente rápido.
 
 ### Otras opciones
 
-- [Peeky](https://peeky.dev/) es otro rápido ejecutor de pruebas unitarias con integración de primera clase de Vite. También ha sido creado por un miembro del equipo central de Vue y ofrece una interfaz de pruebas basada en una interfaz gráfica.
+- [Peeky](https://peeky.dev/) es otro rápido ejecutor de pruebas unitarias con integración de primera clase con Vite. También ha sido creado por un miembro del equipo central de Vue y ofrece una interfaz de pruebas basada en una GUI.
 
 - [Jest](https://jestjs.io/) es un popular framework de pruebas unitarias y se puede hacer funcionar con Vite a través del paquete [vite-jest](https://github.com/sodatea/vite-jest). Sin embargo, solo recomendamos Jest si tienes un conjunto de pruebas de Jest existente que necesita ser migrado a un proyecto basado en Vite, ya que Vitest ofrece una integración más fluida y un mejor rendimiento.
 
-## Prueba de Componentes
+## Pruebas de Componentes
 
-En las aplicaciones de Vue, los componentes son los principales bloques de construcción de la interfaz de usuario. Por lo tanto, los componentes son la unidad natural de aislamiento cuando se trata de validar el comportamiento de su aplicación. Desde una perspectiva de granularidad, las pruebas de componentes se encuentran en algún lugar por encima de las pruebas unitarias y pueden considerarse una forma de prueba de integración. Gran parte de su aplicación de Vue debe estar cubierta por una prueba de componente y recomendamos que cada componente de Vue tenga su propio archivo de especificaciones (.spec).
+En las aplicaciones de Vue, los componentes son los principales bloques de construcción de la interfaz de usuario. Por lo tanto, los componentes son la unidad natural de aislamiento cuando se trata de validar el comportamiento de la aplicación. Desde una perspectiva de granularidad, las pruebas de componentes se encuentran en algún lugar por encima de las pruebas unitarias y pueden considerarse una forma de prueba de integración. Gran parte de tu aplicación de Vue debe estar cubierta por una prueba de componente y recomendamos que cada componente de Vue tenga su propio archivo de especificaciones.
 
-Las pruebas de componentes deben detectar problemas relacionados con los props de tu componente, los eventos, los slots que proporcionan, los estilos, las clases, los hooks del ciclo de vida y más.
+Las pruebas de componentes deben detectar problemas relacionados con las props, los eventos, los slots que proveen, los estilos, las clases, los hooks del ciclo de vida y más de tu componente.
 
-Las pruebas de componentes no deben simular componentes hijos, sino que deben probar las interacciones entre el componente y sus hijos interactuando con los componentes como lo haría un usuario. Por ejemplo, una prueba de componentes debe hacer clic en un elemento como lo haría un usuario, en lugar de interactuar mediante programación con el componente.
+Las pruebas de componentes no deben simular componentes hijos, sino que deben probar las interacciones entre el componente y sus hijos interactuando con los componentes como lo haría un usuario. Por ejemplo, una prueba de componentes debe hacer clic en un elemento como lo haría un usuario, en lugar de interactuar programáticamente con el componente.
 
-Las pruebas de componentes deben centrarse en las interfaces públicas del componente en lugar de los detalles de implementación interna. Para la mayoría de los componentes, la interfaz pública se limita a: eventos emitidos, props y slots. Al realizar pruebas, recuerde **probar lo que hace un componente, no cómo lo hace**.
+Las pruebas de componentes deben centrarse en las interfaces públicas del componente en lugar de los detalles de implementación interna. Para la mayoría de los componentes, la interfaz pública se limita a: eventos emitidos, props y slots. Al realizar pruebas, recuerda **probar lo que hace un componente, no cómo lo hace**.
 
 **QUÉ HACER**
 
-- Para la lógica **Visual**: asegure la salida correcta del renderizado en función de los props y los slots ingresados.
-- Para la lógica de **Comportamiento**: asegure las actualizaciones correctas del renderizado o los eventos emitidos en respuesta a los eventos de entrada del usuario.
+- Para la lógica **Visual**: asegura la salida correcta del renderizado en función de las props y los slots ingresados.
+- Para la lógica de **Comportamiento**: asegura las actualizaciones correctas del renderizado o los eventos emitidos en respuesta a los eventos de entrada del usuario.
 
-  En el siguiente ejemplo, probamos un componente Stepper que tiene un elemento del DOM llamado "increment" al que se le puede hacer clic. Pasamos un prop llamado `max` que evita que Stepper se incremente más allá de `2`, por lo que si hacemos clic en el botón 3 veces, la interfaz de usuario aún debería decir `2`.
+  En el siguiente ejemplo, probamos un componente Stepper que tiene un elemento del DOM llamado "increment" al que se le puede hacer clic. Pasamos una prop llamada `max` que evita que Stepper se incremente más allá de `2`, por lo que si hacemos clic en el botón 3 veces, la interfaz de usuario aún debería decir `2`.
 
-  No sabemos nada sobre la implementación de Stepper, solo que la "entrada" es el prop `max` y la "salida" es el estado del DOM tal y como lo verá el usuario.
+  No sabemos nada sobre la implementación de Stepper, solo que la "entrada" es la prop `max` y la "salida" es el estado del DOM tal y como lo verá el usuario.
 
 <TestingApiSwitcher>
 
@@ -200,31 +200,31 @@ cy.get(valueSelector)
 
 - **QUÉ NO HACER**
 
-  No compruebes el estado privado de una instancia de un componente ni pruebes los métodos privados de un componente. Probar los detalles de la implementación hace que las pruebas sean frágiles, ya que es más probable que se rompan y requieran actualizaciones cuando la implementación cambie.
+  No compruebes el estado privado de la instancia de un componente ni pruebes los métodos privados de un componente. Probar los detalles de la implementación hace que las pruebas sean frágiles, ya que es más probable que se rompan y requieran actualizaciones cuando la implementación cambie.
 
-  El trabajo final del componente es generar la salida correcta del DOM, por lo que las pruebas que se centran en la salida del DOM brindan el mismo nivel de garantía adecuado (si no más) y son más sólidas y resistentes al cambio.
+  El trabajo final del componente es renderizar la salida correcta del DOM, por lo que las pruebas que se centran en la salida del DOM brindan el mismo nivel de garantía adecuado (si no más) y son más sólidas y resistentes al cambio.
 
-  No confíes exclusivamente en las pruebas instantáneas. La comprobación de las cadenas HTML no describe la corrección. Escribe pruebas intencionales.
+  No confíes exclusivamente en las pruebas instantáneas. La comprobación de las cadenas HTML no describe la corrección. Escribe pruebas con intencionalidad.
 
-  Si un método debe probarse a fondo, considere extraerlo en una función de utilidad independiente y escriba una prueba unitaria dedicada para él. Si no se puede extraer limpiamente, se puede probar como parte de un componente, integración o prueba de extremo a extremo que lo cubra.
+  Si un método debe probarse a fondo, considera extraerlo en una función de utilidad independiente y escriba una prueba unitaria dedicada para él. Si no se puede extraer limpiamente, se puede probar como parte de un componente, integración o prueba de extremo a extremo que lo cubra.
 
 ### Recomendación
 
 - [Vitest](https://vitest.dev/) para componentes o composables que se renderizan sin el head (por ejemplo, la función [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) en VueUse). Los componentes y el DOM se pueden probar usando [@testing-library/vue](https://testing-library.com/docs/vue-testing-library/intro).
 
-- [Pruebas de componentes de Cypress](https://on.cypress.io/component) para componentes cuyo comportamiento esperado depende de la representación adecuada de estilos o la activación de eventos del DOM nativos. Se puede usar con Biblioteca de Pruebas a través de [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
+- [Pruebas de Componentes de Cypress](https://on.cypress.io/component) para componentes cuyo comportamiento esperado depende de la representación adecuada de estilos o la activación de eventos nativos del DOM. Se puede usar con Librería de Pruebas a través de [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 
-Las principales diferencias entre Vitest y los corredores de pruebas basados en el navegador son la velocidad y el contexto de ejecución. En resumen, los corredores basados en navegador, como Cypress, pueden detectar problemas que los corredores basados en nodos, como Vitest, no pueden (por ejemplo, problemas de estilo, eventos nativos reales del DOM, cookies, almacenamiento local y fallas de red), pero los corredores basados en el navegador son _órdenes de magnitud más lentos que Vitest_ porque abren un navegador, compilan sus hojas de estilo y más. Cypress es un corredor basado en el navegador que soporta pruebas de componentes. Por favor, lea la [página de comparación de Vitest](https://vitest.dev/guide/comparisons.html#cypress) para obtener la información más reciente que compara Vitest y Cypress.
+Las principales diferencias entre Vitest y los ejecutores de pruebas basados en el navegador son la velocidad y el contexto de ejecución. En resumen, los ejecutores basados en navegador, como Cypress, pueden detectar problemas que los ejecutores basados en nodos, como Vitest, no pueden (por ejemplo, problemas de estilo, eventos reales nativos del DOM, cookies, almacenamiento local y fallas de red), pero los ejecutores basados en el navegador son _órdenes de magnitud más lentos que Vitest_ porque abren un navegador, compilan sus hojas de estilo y más. Cypress es un ejecutor basado en el navegador que soporta pruebas de componentes. Por favor, lee la [página de comparación de Vitest](https://vitest.dev/guide/comparisons.html#cypress) para obtener la información más reciente que compara Vitest y Cypress.
 
 ### Librerías de Montaje
 
 La prueba de componentes a menudo implica montar el componente que se está probando de forma aislada, desencadenar eventos simulados de entrada de usuario y la realización de pruebas en la salida del DOM renderizado. Existen librerías dedicadas que simplifican estas tareas.
 
-- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) es una librería de pruebas de Vue centrada en probar componentes sin depender de los detalles de implementación. Creado teniendo en cuenta la accesibilidad, su enfoque también hace que la refactorización sea muy sencilla. Su objetivo principal es que cuanto más se parezcan las pruebas a la forma en que se usa el software, más confianza pueden brindar.
+- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) es una librería de pruebas de Vue centrada en probar componentes sin depender de los detalles de implementación. Creada con la accesibilidad en mente, su enfoque también hace que la refactorización sea muy sencilla. Su objetivo principal es que cuanto más se parezcan las pruebas a la forma en que se usa el software, más confianza pueden brindar.
 
 - [`@vue/test-utils`](https://github.com/vuejs/test-utils) es la librería oficial de prueba de componentes de bajo nivel que se escribió para proporcionar a los usuarios acceso a las API específicas de Vue. También es la librería de bajo nivel sobre la que está construida `@testing-library/vue`.
 
-Recomendamos usar `@testing-library/vue` para probar componentes en aplicaciones, ya que su enfoque se alinea mejor con las prioridades de prueba de las aplicaciones. Use `@vue/test-utils` solo si está creando componentes avanzados que requieren pruebas internas específicas de Vue.
+Recomendamos usar `@testing-library/vue` para probar componentes en aplicaciones, ya que su enfoque se alinea mejor con las prioridades de prueba de las aplicaciones. Usa `@vue/test-utils` solo si estás creando componentes avanzados que requieren pruebas internas específicas de Vue.
 
 ### Otras opciones
 
