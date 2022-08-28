@@ -281,7 +281,7 @@ No utilice `.passive` y `.prevent` juntos, porque `.passive` ya le indica al nav
 Cuando escuchamos eventos de teclado, a menudo necesitamos comprobar teclas específicas. Vue permite añadir modificadores de tecla para `v-on` o `@` al escuchar eventos de teclado:
 
 ```vue-html
-<!-- sólo llama a `vm.submit()` cuando la `tecla` es `Enter` -->
+<!-- sólo llama a `submit` cuando la `key` es `Enter` -->
 <input @keyup.enter="submit" />
 ```
 
