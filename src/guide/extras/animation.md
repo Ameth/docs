@@ -7,11 +7,11 @@ import AnimateWatcher from './demos/AnimateWatcher.vue'
 
 # Técnicas de Animación
 
-Vue provides the [`<Transition>`](/guide/built-ins/transition.html) and [`<TransitionGroup>`](/guide/built-ins/transition-group.html) components for handling enter / leave and list transitions. However, there are many other ways of using animations on the web, even in a Vue application. Here we will discuss a few additional techniques.
+Vue proporciona los componentes [`<Transition>`](/guía/built-ins/transition.html) y [`<TransitionGroup>`](/guía/built-ins/transition-group.html) para manejar transiciones de entrada / salida y de lista. Sin embargo, hay muchas otras formas de utilizar las animaciones en la web, incluso en una aplicación Vue. Aquí discutiremos algunas técnicas adicionales.
 
 ## Animaciones Basadas en Clases
 
-For elements that are not entering / leaving the DOM, we can trigger animations by dynamically adding a CSS class:
+Para los elementos que no entran / salen del DOM, podemos activar animaciones añadiendo dinámicamente una clase CSS:
 
 <div class="composition-api">
 
@@ -51,8 +51,8 @@ export default {
 
 ```vue-html
 <div :class="{ shake: disabled }">
-  <button @click="warnDisabled">Click me</button>
-  <span v-if="disabled">This feature is disabled!</span>
+  <button @click="warnDisabled">Hazme clic</button>
+  <span v-if="disabled">¡Esta función está desactivada!</span>
 </div>
 ```
 
@@ -90,7 +90,7 @@ export default {
 
 ## Animaciones Controladas por el Estado
 
-Some transition effects can be applied by interpolating values, for instance by binding a style to an element while an interaction occurs. Take this example for instance:
+Algunos efectos de transición pueden aplicarse interpolando valores, por ejemplo, vinculando un estilo a un elemento mientras se produce una interacción. Tomemos este ejemplo concreto:
 
 <div class="composition-api">
 
@@ -128,7 +128,7 @@ export default {
   :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"
   class="movearea"
 >
-  <p>Move your mouse across this div...</p>
+  <p>Mueve el mouse sobre este div...</p>
   <p>x: {{ x }}</p>
 </div>
 ```
@@ -141,13 +141,13 @@ export default {
 
 <Colors />
 
-In addition to color, you can also use style bindings to animate transform, width, or height. You can even animate SVG paths using spring physics - after all, they are all attribute data bindings:
+Además del color, también puedes utilizar vínculos de estilo para animar la transformación, el ancho o la altura. Incluso puedes animar los trazados de SVG utilizando la fuerza física del resorte; después de todo, todos son vínculos a datos de atributos:
 
 <ElasticHeader />
 
 ## Animación con Watchers
 
-With some creativity, we can use watchers to animate anything based on some numerical state. For example we can animate the number itself:
+Con algo de creatividad, podemos usar watchers para animar cualquier cosa basada en algún estado numérico. Por ejemplo, podemos animar el propio número:
 
 <div class="composition-api">
 

@@ -14,7 +14,7 @@ watch(number, (n) => {
 
 <template>
   <div class="demo">
-    Tipo de número: <input v-model.number="number" />
+    Escribe un número: <input v-model.number="number" />
     <p class="big-number">{{ tweened.number.toFixed(0) }}</p>
   </div>
 </template>
