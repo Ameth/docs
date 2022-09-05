@@ -104,7 +104,7 @@ export function useEventListener(target, event, callback) {
 }
 ```
 
-And now our `useMouse()` composable can be simplified to:
+Y ahora nuestro composable `useMouse()` puede ser simplificado a:
 
 ```js{3,9-12}
 // mouse.js
@@ -148,10 +148,10 @@ fetch('...')
 <template>
   <div v-if="error">¡Oops! Error encontrado: {{ error.message }}</div>
   <div v-else-if="data">
-    Data loaded:
+    Datos cargados:
     <pre>{{ data }}</pre>
   </div>
-  <div v-else>Loading...</div>
+  <div v-else>Cargando...</div>
 </template>
 ```
 

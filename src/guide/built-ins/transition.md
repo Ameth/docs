@@ -20,7 +20,7 @@ Ademas de estos dos componentes, también podemos aplicar animaciones en Vue usa
 
 ## El Componente `<Transition>`
 
-`<Transition>` es un componente integrado: esto significa que está disponible en la plantilla de cualquier componente sin tener que registrarlo. Se puede utilizar para aplicar animaciones de entrada y salida en elementos o componentes pasados a través de una slot por defecto. La entrada o salida puede ser activada por una de las siguientes opciones:
+`<Transition>` es un componente integrado: esto significa que está disponible en la plantilla de cualquier componente sin tener que registrarlo. Se puede utilizar para aplicar animaciones de entrada y salida en elementos o componentes pasados a través de un slot por defecto. La entrada o salida puede ser activada por una de las siguientes opciones:
 
 - Renderizado condicional mediante `v-if`.
 - Visualización condicional mediante `v-show`.
@@ -71,7 +71,7 @@ Cuando se inserta o elimina un elemento en un componente `<Transition>`, esto es
 
 2. Si hay escuchadores para [hooks de JavaScript](#hooks-de-javascript), estos hooks serán llamados en los momentos apropiados.
 
-3. Si no se detectan transiciones / animaciones CSS y no se proporcionan hooks de JavaScript, las operaciones del DOM para la inserción y/o eliminación se ejecutarán en el siguiente marco de animación del navegador.
+3. Si no se detectan transiciones / animaciones CSS y no se proporcionan hooks de JavaScript, las operaciones del DOM para la inserción y/o eliminación se ejecutarán en el siguiente frame de animación del navegador.
 
 ## Transiciones Basadas en CSS
 
