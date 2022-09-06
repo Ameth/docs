@@ -8,7 +8,7 @@ import SpreadSheet from './demos/SpreadSheet.vue'
 
 # Reactividad en Profundidad
 
-Una de las características más distintivas de Vue es el sistema de reactividad no intrusiva. Los estados de los componentes son objetos JavaScript reactivos. Cuando los modificas, la vista se actualiza. Esto hace que la gestión del estado sea sencilla e intuitiva, pero también es importante entender cómo funciona para evitar algunos problemas comunes. En esta sección, vamos a profundizar en algunos de los detalles de bajo nivel del sistema de reactividad de Vue.
+Una de las características más distintivas de Vue es el sistema de reactividad no intrusiva. El estado de los componentes consiste en objetos JavaScript reactivos. Cuando los modificas, la vista se actualiza. Esto hace que la gestión del estado sea sencilla e intuitiva, pero también es importante entender cómo funciona para evitar algunos problemas comunes. En esta sección, vamos a profundizar en algunos de los detalles de bajo nivel del sistema de reactividad de Vue.
 
 ## ¿Qué es la Reactividad?
 

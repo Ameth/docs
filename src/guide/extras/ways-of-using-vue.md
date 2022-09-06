@@ -14,6 +14,8 @@ Puedes utilizar Vue para [construir Componentes Web estándar](/guide/extras/web
 
 ## Aplicación de una Sola Página (SPA)
 
+Algunas aplicaciones requieren una rica interactividad, una gran profundidad de sesión y una lógica de estado no trivial en el frontend. La mejor manera de construir este tipo de aplicaciones es utilizar una arquitectura en la que Vue no sólo controla toda la página, sino que también maneja las actualizaciones de los datos y la navegación sin tener que recargar la página. Este tipo de aplicación se suele denominar Aplicación de una Sola Página (SPA).
+
 Vue proporciona librerías de base y [soporte integral de herramientas](/guide/scaling-up/tooling) con una increíble experiencia para el desarrollador a la hora de construir SPAs modernas, incluyendo:
 
 - Enrutador del lado del cliente

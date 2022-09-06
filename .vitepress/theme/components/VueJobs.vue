@@ -43,7 +43,7 @@ onMounted(async () => {
           <div class="vj-job-info">
             {{ job.organization.name }} <span>· </span>
             <span v-if="['ONLY', 'ALLOWED'].includes(job.remote)"
-              >Remote</span
+              >Remoto</span
             >
             <span v-else>{{ job.locations[0] }}</span>
           </div>
@@ -51,11 +51,11 @@ onMounted(async () => {
       </a>
     </div>
     <div class="vj-link">
-      Jobs by
+      Empleos por
       <a
         href="https://vuejobs.com/?utm_source=vuejs&utm_medium=referral&utm_campaign=jobs_widget&utm_content=bottom_link"
         target="_blank"
-        title="Hire Vue.js developers"
+        title="Contratar a desarrolladores de Vue.js"
         >vuejobs.com</a
       >
     </div>
