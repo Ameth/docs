@@ -315,7 +315,7 @@ function BaseLayout(slots) {
 
 Ten en cuenta que la expresión está sujeta a las [restricciones sintácticas](/guide/essentials/template-syntax.html#directivas) de los argumentos de la directiva dinámica.
 
-## Slots con Ámbito de Aplicación
+## Slots con Ámbito
 
 Como se discutió en [Ámbito de Renderizado](#ambito-de-renderizado), el contenido de los slots no tiene acceso al estado del componente hijo.
 

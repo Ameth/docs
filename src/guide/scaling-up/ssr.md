@@ -8,7 +8,7 @@ outline: deep
 
 ### ¿Qué es el SSR?
 
-Vue.js es un framework para crear aplicaciones del lado del cliente. Por defecto, los componentes de Vue producen y manipulan el DOM en el navegador como salida. Sin embargo, también es posible renderizar los mismos componentes en cadenas HTML en el servidor, enviarlos directamente al navegador y finalmente "incorporar" el contenido estático en una aplicación completamente interactiva en el cliente.
+Vue.js es un framework para construir aplicaciones del lado del cliente. Por defecto, los componentes de Vue generan y manipulan el DOM en el navegador a modo de salida. Sin embargo, también es posible renderizar los mismos componentes en cadenas HTML en el servidor, enviarlas directamente al navegador y, finalmente, "hidratar" el código estático en una aplicación completamente interactiva sobre el cliente.
 
 Una aplicación Vue.js renderizada por el servidor también se puede considerar "isomórfica" o "universal", en el sentido de que la mayor parte del código de la aplicación se ejecuta tanto en el servidor **como en el** cliente.
 
@@ -16,31 +16,31 @@ Una aplicación Vue.js renderizada por el servidor también se puede considerar 
 
 En comparación con una aplicación de una sola página (SPA) del lado del cliente, la ventaja de SSR radica principalmente en:
 
-- **Mayor rapidez en la visualización del contenido**: esto es más importante en el caso de un Internet lento o de dispositivos lentos. El contenido renderizado por el servidor no necesita esperar hasta que todo el JavaScript se haya descargado y ejecutado para ser mostrado, por lo que tus usuarios verán una página completamente renderizada más pronto. Además, la obtención de datos se realiza en el lado del servidor para la visita inicial, que probablemente tenga una conexión más rápida con tu base de datos que el cliente. Esto generalmente resulta en una mejora de las métricas de [Core Web Vitals](https://web.dev/vitals/), una mejor experiencia de usuario y puede ser fundamental para las aplicaciones donde el tiempo de contenido está directamente asociado con la tasa de conversión.
+- **Mayor rapidez en la visualización del contenido**: esto es más importante en el caso de internet lento o de dispositivos lentos. El código renderizado en el servidor no necesita esperar hasta que todo el JavaScript se haya descargado y ejecutado para ser mostrado, por lo que el usuario verá una página completamente renderizada en menos tiempo. Por otra parte, la recuperación de datos se realiza en el lado del servidor durante la primera consulta, que probablemente tenga una conexión con la base de datos más rápida que la del cliente. Esto generalmente resulta en una mejora de las métricas de las [Core Web Vitals](https://web.dev/vitals/), una mejor experiencia de usuario y puede ser crítico para las aplicaciones en las que el tiempo para llegar al contenido esté directamente asociado con la tasa de conversión.
 
-- **Modelo mental unificado**: puedes usar el mismo lenguaje y el mismo modelo mental declarativo orientado a componentes para desarrollar toda tu aplicación, en lugar de saltar de un lado a otro entre un sistema de plantillas de backend y un framework de frontend.
+- **Modelo mental unificado**: puedes utilizar el mismo lenguaje y el mismo modelo mental declarativo orientado a componentes para desarrollar toda tu aplicación, en lugar de saltar adelante y atrás entre un sistema de plantillas de backend y un framework de frontend.
 
-- **Mejor SEO**: los rastreadores de los motores de búsqueda verán directamente la página completamente renderizada.
+- **Mejor SEO**: los rastreadores de los motores de búsqueda visualizarán la página completamente renderizada de forma directa.
 
   :::tip
   A partir de ahora, Google y Bing pueden indexar aplicaciones JavaScript síncronas sin problemas. Sincrónico es la palabra clave. Si tu aplicación comienza con un spinner de carga, y luego obtienes el contenido a través de Ajax, el rastreador no esperará a que termine. Esto significa que si tienes contenido obtenido de forma asíncrona en páginas donde el SEO es importante, el SSR podría ser necesario.
   :::
 
-También hay algunas compensaciones a considerar al usar SSR:
+También hay que tener en cuenta algunas desventajas a la hora de utilizar el SSR:
 
-- Restricciones de desarrollo. El código específico del navegador solo se puede usar dentro de ciertos hooks de ciclo de vida; algunas librerías externas pueden necesitar un tratamiento especial para poder ejecutarse en una aplicación renderizada por el servidor.
+- Restricciones de desarrollo. El código específico del navegador solo se puede usar dentro de ciertos hooks del ciclo de vida; algunas librerías externas pueden necesitar un tratamiento especial para poder ejecutarse en una aplicación renderizada por el servidor.
 
-- Requisitos de configuración y despliegue más complicados. A diferencia de un SPA totalmente estático que se puede implementar en cualquier servidor de archivos estático, una aplicación renderizada en el servidor requiere un entorno en el que pueda ejecutarse un servidor de Node.js.
+- Requisitos de configuración y despliegue más complicados. A diferencia de una SPA totalmente estática que se puede implementar en cualquier servidor de archivos estático, una aplicación renderizada en el servidor requiere un entorno en el que pueda ejecutarse un servidor de Node.js.
 
-- Más carga del lado del servidor. Renderizar una aplicación completa en Node.js requerirá más CPU que solo entregar archivos estáticos, por lo que si esperas mucho tráfico, prepárate para la correspondiente carga del servidor y emplea sabiamente estrategias de almacenamiento en caché.
+- Más carga del lado del servidor. Renderizar una aplicación completa en Node.js requerirá más CPU que solo servir archivos estáticos, por lo que si esperas mucho tráfico, prepárate para la correspondiente carga del servidor y emplea sabiamente estrategias de almacenamiento en caché.
 
 Antes de usar SSR para tu aplicación, la primera pregunta que debes hacerte es si realmente lo necesitas. Depende sobre todo de la importancia que tenga el tiempo de acceso al contenido para tu aplicación. Por ejemplo, si estás construyendo un panel de control interno en el que unos cientos de milisegundos adicionales en la carga inicial no importan demasiado, SSR sería una exageración. Sin embargo, en los casos en los que el tiempo de acceso al contenido es absolutamente crítico, SSR puede ayudarte a conseguir el mejor rendimiento posible en la carga inicial.
 
 ### SSR vs. SSG
 
-**La generación de sitios estáticos (SSG)**, también conocida como pre-renderización, es otra técnica popular para crear sitios web rápidos. Si los datos necesarios para renderizar una página en el servidor son los mismos para todos los usuarios, entonces, en lugar de renderizar la página cada vez que llega una solicitud, podemos renderizarla solo una vez, por adelantado, durante el proceso de compilación. Las páginas renderizadas previamente se generan y sirven como archivos HTML estáticos.
+**La Generación de Sitios Estáticos (SSG)**, también conocida como pre-renderización, es otra técnica popular para crear sitios web rápidos. Si los datos necesarios para renderizar una página en el servidor son los mismos para todos los usuarios, entonces, en lugar de renderizar la página cada vez que llega una solicitud, podemos renderizarla solo una vez, por adelantado, durante el proceso de compilación. Las páginas renderizadas previamente se generan y sirven como archivos HTML estáticos.
 
-SSG conserva las mismas características de rendimiento de las aplicaciones SSR: proporciona un gran rendimiento en el tiempo de acceso al contenido. Al mismo tiempo, es más barato y fácil de implementar que las aplicaciones SSR porque la salida es de HTML y recursos estáticos. La palabra clave aquí es **estático**: SSG solo se puede aplicar a páginas que consumen datos estáticos, es decir, datos que se conocen en el momento de la compilación y que no cambian entre despliegues. Cada vez que los datos cambian, se necesita un nuevo despliegue.
+SSG conserva las mismas características de rendimiento de las aplicaciones SSR: proporciona un gran rendimiento en el tiempo de acceso al contenido. Al mismo tiempo, es más barato y fácil de implementar que las aplicaciones SSR porque la salida es HTML estático y los recursos. La palabra clave aquí es **estático**: SSG solo se puede aplicar a páginas que consumen datos estáticos; es decir, datos que se conocen en el momento de la compilación y que no cambian entre despliegues. Cada vez que los datos cambian, se necesita un nuevo despliegue.
 
 Si solo estás investigando SSR para mejorar el SEO de un puñado de páginas de marketing (por ejemplo, `/`, `/about`, `/contact`, etc.), entonces probablemente deseas SSG en lugar de SSR. SSG también es excelente para sitios web basados ​​en contenido, como sitios de documentación o blogs. De hecho, este sitio web que estás leyendo en este momento se genera estáticamente utilizando [VitePress](https://vitepress.vuejs.org/), un generador de sitios estáticos con tecnología de Vue.
 
