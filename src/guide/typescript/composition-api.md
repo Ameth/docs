@@ -83,21 +83,36 @@ defineProps<Props>()
 
 Esto se debe a que los componentes Vue se compilan de forma aislada y el compilador actualmente no rastrea los archivos importados para analizar el tipo de fuente. Esta limitación podría eliminarse en una futura versión.
 
-### Valores por Defecto de las Props <sup class="vt-badge experimental" />
+### Valores por Defecto de las Props />
 
-Al utilizar la declaración basada en el tipo, perdemos la capacidad de declarar valores por defecto para las props. Esto puede ser resuelto por la actualmente experimental [Transformación de la Reactividad](/guide/extras/reactivity-transform.html):
+Al utilizar la declaración basada en tipos, perdemos la capacidad de declarar valores por defecto para los props. Esto puede resolverse con la macro del compilador `withDefaults`:
+
+```ts
+export interface Props {
+  msg?: string
+  labels?: string[]
+}
+const props = withDefaults(defineProps<Props>(), {
+  msg: 'hola',
+  labels: () => ['uno', 'dos']
+})
+```
+
+Esto se compilará con las opciones de las props `default` equivalentes en tiempo de ejecución. Además, el helper `withDefaults` permite realizar comprobaciones de tipo para los valores por defecto, y asegura que el tipo `props` devuelto tiene las banderas opcionales removidas para las propiedades que sí tienen valores por defecto declarados.
+
+Alternativamente, puedes usar la versión actualmente experimental [Transformación de la Reactividad](/guide/extras/reactivity-transform.html):
 
 ```vue
 <script setup lang="ts">
 interface Props {
-  foo: string
-  bar?: number
+  name: string
+  count?: number
 }
 
 // desestructuración reactiva para defineProps()
 // el valor por defecto se compila a la opción
 // equivalente en tiempo de ejecución
-const { foo, bar = 100 } = defineProps<Props>()
+const { name, count = 100 } = defineProps<Props>()
 </script>
 ```
 
