@@ -619,7 +619,7 @@ export default {
 
 </div>
 
-### Directives Personalizadas
+### Directivas Personalizadas
 
 Las directivas personalizadas pueden ser aplicadas a un vnode usando [`withDirectives`](/api/render-function.html#withdirectives):
 
