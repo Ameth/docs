@@ -423,9 +423,9 @@ export const sidebar = {
     {
       text: 'Componente de un Solo Archivo (Single File Component)',
       items: [
-        { text: 'Especificaciones de Sintaxis', link: '/api/sfc-spec' },
+        { text: 'Especificación de Sintaxis', link: '/api/sfc-spec' },
         { text: '<script setup>', link: '/api/sfc-script-setup' },
-        { text: 'Propiedades del CSS', link: '/api/sfc-css-features' }
+        { text: 'Características CSS', link: '/api/sfc-css-features' }
       ]
     },
     {
